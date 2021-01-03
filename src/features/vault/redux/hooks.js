@@ -1,5 +1,5 @@
 import { LunarModuleAbi } from 'features/configure/abi';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 
@@ -10,6 +10,29 @@ export { useFetchApproval } from './fetchApproval';
 export { useFetchDeposit } from './fetchDeposit';
 export { useFetchWithdraw } from './fetchWithdraw';
 export { useFetchContractApy } from './fetchContractApy';
+
+export function useEarned(poolAddress) {
+    const { web3, address } = useConnectWallet();
+    const [earned, setEarned] = useState(0);
+
+    const fetchEarned = useCallback(async () => {
+        const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
+
+        const allowance = await contract.methods.earned(address).call()
+        console.warn('useAllowance::fetchAllowance:allowance:', allowance)
+        // setAllowance(new BigNumber(allowance))
+    }, [address, setEarned, poolAddress])
+
+    useEffect(() => {
+        // if (address) {
+        //     fetchEarned()
+        // }
+        let refreshInterval = setInterval(fetchEarned, 10000)
+        return () => clearInterval(refreshInterval)
+    }, [address, fetchEarned])
+
+    return earned
+}
 
 export function useFetchExit() {
     const { web3, address } = useConnectWallet();

@@ -33,7 +33,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import { useSnackbar } from 'notistack';
 //  hooks
 import { useConnectWallet } from '../../home/redux/hooks';
-import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit } from '../redux/hooks';
+import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useEarned } from '../redux/hooks';
 import CustomSlider from 'components/CustomSlider/CustomSlider';
 
 import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
@@ -302,8 +302,11 @@ export default function SectionPools() {
             // depositedApy = random(0, 1)
             // depositedApy =byDecimals(random(0, 100), 1)
 
+            const earned = useEarned(pool.earnContractAddress)
+
             return (
                 <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
+                  {earned}
                     <div style={{width: "100%"}}>
                         <Accordion
                             expanded={Boolean(openedCardList.includes(index))}
@@ -364,20 +367,26 @@ export default function SectionPools() {
                             <Grid item md={8} xs={3}>
                                 <Grid item container justify="space-between">
                                     <Hidden smDown>
-                                        <Grid item xs={7} container justify='center' alignItems="center">
+                                        <Grid item xs={3} container justify='center' alignItems="center">
                                             <Grid item style={{width: "200px"}}>
                                                 <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(balanceSingle)} { pool.token }</Typography>
                                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-Balance')}</Typography></Grid>
                                         </Grid>
                                     </Hidden>
                                     <Hidden mdDown>
-                                        <Grid item xs={4} container justify='center' alignItems="center">
+                                        <Grid item xs={3} container justify='center' alignItems="center">
                                             <Grid item style={{width: "200px"}}>
                                                 <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(singleDepositedBalance)} { pool.token }</Typography>
                                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-Deposited')}</Typography>
                                             </Grid>
                                         </Grid>
                                     </Hidden>
+                                    <Grid item xs={3} container justify='center' alignItems="center">
+                                        <Grid item>
+                                            <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(earned)} { pool.earnedToken }</Typography>
+                                            <Typography className={classes.iconContainerSubTitle} variant="body2">Earned</Typography>
+                                        </Grid>
+                                    </Grid>
                                     <Grid item xs={12} md={1} container justify='center' alignItems="center">
                                         <Grid item>
                                             <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {depositedApy}</Typography>

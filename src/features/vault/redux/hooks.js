@@ -2,6 +2,7 @@ import { LunarModuleAbi } from 'features/configure/abi';
 import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
+import {byDecimals} from 'features/helpers/bignumber';
 
 import { useConnectWallet } from '../../home/redux/hooks';
 export { useFetchBalances } from './fetchBalances';
@@ -13,20 +14,19 @@ export { useFetchContractApy } from './fetchContractApy';
 
 export function useEarned(poolAddress) {
     const { web3, address } = useConnectWallet();
-    const [earned, setEarned] = useState(0);
+    const [earned, setEarned] = useState(new BigNumber(0));
 
     const fetchEarned = useCallback(async () => {
         const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
         const allowance = await contract.methods.earned(address).call()
-        console.warn('useAllowance::fetchAllowance:allowance:', allowance)
-        // setAllowance(new BigNumber(allowance))
-    }, [address, setEarned, poolAddress])
+        setAllowance(byDecimals(allowance))
+    }, [address, setEarned, poolAddress, web3])
 
     useEffect(() => {
-        // if (address) {
-        //     fetchEarned()
-        // }
+        if (address) {
+            fetchEarned()
+        }
         let refreshInterval = setInterval(fetchEarned, 10000)
         return () => clearInterval(refreshInterval)
     }, [address, fetchEarned])

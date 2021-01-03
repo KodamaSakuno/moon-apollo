@@ -1,69 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to YFII Project Apollo
 
-## Available Scripts
+## Pain Points of Existing DeFi Yield Aggregators
+An new wave of DeFi mining era is coming as the booming of Algorithmic Stablecoins, however, currently these new projects are not general investors friendly. The reasons are:
 
-In the project directory, you can run:
+- First, high yields APY usually come with high gas fees, the result is half a day of your income probably will go for Ethereum miners.
+- DeFi is growing fast. It takes a lot of effort and time to research and learn new products and concepts even for experienced investors.
+- Higher APY might also means shorter mining window. And as the amount of your capital staked is too low. Other investors start to claim their income before you do which means you probably miss the best harvest time for selling your yammy yeild.
+
+## Principle of Design
+
+To address these pain points, here we design an new generation of aggregators contracts, under code name, YFII Project Apollo. Basically, YFII Apollo is a minimalist aggregator product which focuss on gas-optimization, quick strategy switching, and DeFi composability. Some principle of design are as follows:
+
+- Minimize chain calculations and save user fees. Contract earnings take manual claim model, no longer included in compound interest. The contract only records each users current balance, as a deposit and income receipt certificate, not tokenization. It is estimated that at 140 gas, the average operation per deposit and withdrawal will be reduced from $60 to about $7.
+- The trading path of farming income is designed as a pluggable mode, reserving interfaces to find the best trading path, and allowing community traders to manually trade in semi-automatic mode, Traders manually convert returns to YFII and return them to the vaults to allow immediate adjustments to be made when a new mine is created and the chain trades are illiquid.
+- Handling fees in order to enter and leave the mine pool is executed uniformly by the official YFII robot, which is triggered only when saving exceed a certain threshold. Fees are deducted from the mining profits to further reduce the fees for ordinary retail investors.
 
 
-### `yarn start`
+## How to run locally
+> yarn
+yarn start
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

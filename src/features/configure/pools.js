@@ -63,8 +63,8 @@ export const pools = [
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
     earnedToken: 'USDT',
-    earnedTokenAddress: '0x1F19D041FDCE1B70901008229d77A8B02E315618',
-    earnContractAddress: '0x1F19D041FDCE1B70901008229d77A8B02E315618',
+    earnedTokenAddress: '0x104eff0aCB024625FCD839eBfEef2553172dF046',
+    earnContractAddress: '0x104eff0aCB024625FCD839eBfEef2553172dF046',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1

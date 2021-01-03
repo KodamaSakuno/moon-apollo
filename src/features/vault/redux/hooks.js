@@ -39,7 +39,7 @@ export function useFetchGetReward(poolAddress) {
     const dispatch = useDispatch();
     const { enqueueSnackbar } = useSnackbar();
 
-    const handleExit = useCallback(async () => {
+    const handleGetReward = useCallback(async () => {
         setIsPending(true);
         try {
             await new Promise((resolve, reject) => {
@@ -71,9 +71,9 @@ export function useFetchGetReward(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar]);
 
-    return { isPending, onExit: handleExit };
+    return { isPending, onGetReward: handleGetReward };
 }
 export function useFetchExit(poolAddress) {
     const { web3, address } = useConnectWallet();
@@ -81,7 +81,7 @@ export function useFetchExit(poolAddress) {
     const dispatch = useDispatch();
     const { enqueueSnackbar } = useSnackbar();
 
-    const handleGetReward = useCallback(async () => {
+    const handleExit = useCallback(async () => {
         setIsPending(true);
         try {
             await new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ export function useFetchExit(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar]);
 
-    return { isPending, onGetReward: handleGetReward };
+    return { isPending, onExit: handleExit };
 }

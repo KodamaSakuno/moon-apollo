@@ -33,7 +33,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import { useSnackbar } from 'notistack';
 //  hooks
 import { useConnectWallet } from '../../home/redux/hooks';
-import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy } from '../redux/hooks';
+import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit } from '../redux/hooks';
 import CustomSlider from 'components/CustomSlider/CustomSlider';
 
 import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
@@ -198,7 +198,7 @@ export default function SectionPools() {
         error => enqueueSnackbar(`Withdraw error: ${error}`, {variant: 'error'})
       )
     }
-    
+
   }
 
   const openCard = id => {
@@ -211,7 +211,7 @@ export default function SectionPools() {
         }
       }
     )
-  } 
+  }
 
   useEffect(() => {
     if (address && web3) {
@@ -267,6 +267,8 @@ export default function SectionPools() {
     },200)
   }
 
+  const { onExit } = useFetchExit()
+
   return (
     <Grid container style={{paddingTop: '4px'}}>
       <Grid item xs={12}>
@@ -299,6 +301,7 @@ export default function SectionPools() {
             let depositedApy = contractApy[pool.id] || 0;
             // depositedApy = random(0, 1)
             // depositedApy =byDecimals(random(0, 100), 1)
+
             return (
                 <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
                     <div style={{width: "100%"}}>
@@ -319,7 +322,7 @@ export default function SectionPools() {
                             <Grid item>
                                 <Grid container alignItems="center" spacing={2}>
                                     <Grid item>
-                                        <Avatar 
+                                        <Avatar
                                             alt={pool.token}
                                             src={require(`../../../images/${pool.token}-logo.png`)}
                                         />
@@ -330,7 +333,7 @@ export default function SectionPools() {
                                                 <Hidden smUp>
                                                   <i
                                                     style={{color:primaryColor[0],marginLeft:'4px',visibility:Boolean(isZh?pool.tokenDescriptionUrl2:pool.tokenDescriptionUrl)?"visible":"hidden"}}
-                                                    className={"yfiiicon yfii-help-circle"} 
+                                                    className={"yfiiicon yfii-help-circle"}
                                                     onClick={
                                                         event => {
                                                             event.stopPropagation();
@@ -342,7 +345,7 @@ export default function SectionPools() {
                                                 <Hidden smUp>
                                                   <i
                                                     style={{color:primaryColor[0],marginLeft:'4px',visibility:!isEmpty(pool.depostAlert)?"visible":"hidden"}}
-                                                    className={"fas fa-exclamation"} 
+                                                    className={"fas fa-exclamation"}
                                                     onClick={
                                                       event => {
                                                         event.stopPropagation();
@@ -429,7 +432,7 @@ export default function SectionPools() {
                                           className={classes.iconContainerPrimary}
                                           onClick={(event) => {
                                             event.stopPropagation();
-                                            openCard(index);  
+                                            openCard(index);
                                           }}
                                       >
                                           {
@@ -448,26 +451,26 @@ export default function SectionPools() {
                           {t('Vault-Balance')}:{balanceSingle.toFormat(4)} { pool.token }
                     </div>
                     <FormControl fullWidth variant="outlined">
-                        <CustomOutlinedInput 
+                        <CustomOutlinedInput
                             value={depositedBalance[index]!=undefined ? depositedBalance[index] :'0'}
                             onChange={changeDetailInputValue.bind(this,'depositedBalance',index,balanceSingle.toNumber(),pool.tokenDecimals)}
                             />
                     </FormControl>
-                    <CustomSlider 
+                    <CustomSlider
                       classes={{
                         root: classes.depositedBalanceSliderRoot,
                         markLabel: classes.depositedBalanceSliderMarkLabel,
                       }}
-                      aria-labelledby="continuous-slider" 
+                      aria-labelledby="continuous-slider"
                       value={depositedBalance['slider-'+index]?depositedBalance['slider-'+index]:0}
                       onChange={handleDepositedBalance.bind(this,index,balanceSingle.toNumber())}
                     />
-                    
+
                         <div>
                             {
                                 pool.allowance === 0 ? (
                                     <div className={classes.showDetailButtonCon}>
-                                        <Button 
+                                        <Button
                                             style={{
                                                 backgroundColor:'#353848',
                                                 color:'#FF2D82',
@@ -483,7 +486,7 @@ export default function SectionPools() {
                                     </div>
                                 ) : (
                                     <div className={classes.showDetailButtonCon}>
-                                        <Button 
+                                        <Button
                                             style={{
                                                 width: '180px',
                                                 margin: '12px 5px',
@@ -512,7 +515,7 @@ export default function SectionPools() {
                                             }}
                                             >{t('Vault-DepositButton')}
                                         </Button>
-                                        {Boolean(pool.tokenAddress) && <Button 
+                                        {Boolean(pool.tokenAddress) && <Button
                                             style={{
                                                 width: '180px',
                                                 margin: '12px 5px',
@@ -552,22 +555,22 @@ export default function SectionPools() {
                                 {singleDepositedBalance.multipliedBy(new BigNumber(pool.pricePerFullShare)).toFormat(4)} { pool.token } ({singleDepositedBalance.toFormat(4)} { pool.earnedToken })
                             </div>
                         <FormControl fullWidth variant="outlined">
-                            <CustomOutlinedInput 
+                            <CustomOutlinedInput
                                 value={withdrawAmount[index]!=undefined ? withdrawAmount[index] : '0'}
                                 onChange={changeDetailInputValue.bind(this,'withdrawAmount',index,singleDepositedBalance.toNumber(),pool.itokenDecimals)}
                                 />
                         </FormControl>
-                        <CustomSlider 
+                        <CustomSlider
                             classes={{
                                 root: classes.drawSliderRoot,
                                 markLabel: classes.drawSliderMarkLabel,
                             }}
-                            aria-labelledby="continuous-slider" 
+                            aria-labelledby="continuous-slider"
                             value={withdrawAmount['slider-'+index]?withdrawAmount['slider-'+index]:0}
                             onChange={handleWithdrawAmount.bind(this,index,singleDepositedBalance.toNumber())}
                             />
                         <div className={classes.showDetailButtonCon}>
-                            <Button 
+                            <Button
                                 style={{
                                     width: '180px',
                                     margin: '12px 5px',
@@ -585,7 +588,7 @@ export default function SectionPools() {
                                 >
                                 {fetchWithdrawPending[index] ? `${t('Vault-WithdrawING')}`: `${t('Vault-WithdrawButton')}`}
                             </Button>
-                            <Button 
+                            <Button
                                 style={{
                                     width: '180px',
                                     margin: '12px 5px',
@@ -598,7 +601,7 @@ export default function SectionPools() {
                                 round
                                 type="button"
                                 color="primary"
-                                onClick={onWithdraw.bind(this, pool, index, true, singleDepositedBalance)}
+                                onClick={() => onExit(pool.earnContractAddress)}
                                 >
                                 {fetchWithdrawPending[index] ? `${t('Vault-WithdrawING')}`: `${t('Vault-WithdrawButtonAll')}`}
                             </Button>
@@ -612,7 +615,7 @@ export default function SectionPools() {
             </Grid>
           )
         })}
-      
+
     </Grid>
   )
 }

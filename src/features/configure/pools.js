@@ -1,6 +1,5 @@
-import BigNumber from "bignumber.js";
 // id: '池子id',
-// name: '池子名字',  
+// name: '池子名字',
 // token: '池子代币',
 // tokenDescription: '代币描述',
 // tokenAddress: '代币ERC20地址',
@@ -12,11 +11,11 @@ import BigNumber from "bignumber.js";
 // earnedTokenAddress: '奖励代币ERC20地址',
 // earnContractAddress: '池子合约地址',
 // price ： 挖的代币的价格！
-// path price: 
+// path price:
 export const pools = [
   {
     id: 'dai',
-    name: 'DAI',  
+    name: 'DAI',
     token: 'DAI',
     tokenDescription: 'DAI',
     tokenAddress: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
@@ -34,7 +33,7 @@ export const pools = [
     pastPricePerFullShare: 1
   },{
     id: 'busd',
-    name: 'BUSD',  
+    name: 'BUSD',
     token: 'BUSD',
     tokenDescription: 'BUSD',
     tokenAddress: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
@@ -53,7 +52,7 @@ export const pools = [
   },
   {
     id: 'usdt',
-    name: 'USDT',  
+    name: 'USDT',
     token: 'USDT',
     tokenDescription: 'USDT',
     tokenAddress: '0x55d398326f99059ff775485246999027b3197955',

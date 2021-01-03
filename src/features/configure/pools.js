@@ -68,5 +68,24 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
+  },
+  {
+    id: 'usdc',
+    name: 'USDC',
+    token: 'USDC',
+    tokenDescription: 'USDC',
+    tokenAddress: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'USDC',
+    earnedTokenAddress: '0x341E125F8258d0663c9Cd1Cdb86c2d629619F299',
+    earnContractAddress: '0x341E125F8258d0663c9Cd1Cdb86c2d629619F299',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1
   }
 ]

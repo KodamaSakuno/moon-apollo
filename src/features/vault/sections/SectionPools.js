@@ -303,10 +303,10 @@ export default function SectionPools() {
             // depositedApy =byDecimals(random(0, 100), 1)
 
             const earned = useEarned(pool.earnContractAddress)
+            const formattedEarned = byDecimals(earned, pool.tokenDecimals)
 
             return (
                 <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
-                  {earned}
                     <div style={{width: "100%"}}>
                         <Accordion
                             expanded={Boolean(openedCardList.includes(index))}
@@ -383,7 +383,7 @@ export default function SectionPools() {
                                     </Hidden>
                                     <Grid item xs={3} container justify='center' alignItems="center">
                                         <Grid item>
-                                            <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(earned)} { pool.earnedToken }</Typography>
+                                            <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(formattedEarned)} { pool.earnedToken }</Typography>
                                             <Typography className={classes.iconContainerSubTitle} variant="body2">Earned</Typography>
                                         </Grid>
                                     </Grid>

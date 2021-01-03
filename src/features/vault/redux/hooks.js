@@ -2,8 +2,6 @@ import { LunarModuleAbi } from 'features/configure/abi';
 import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
-import BigNumber from 'bignumber.js';
-import {byDecimals} from 'features/helpers/bignumber';
 
 import { useConnectWallet } from '../../home/redux/hooks';
 export { useFetchBalances } from './fetchBalances';
@@ -15,13 +13,13 @@ export { useFetchContractApy } from './fetchContractApy';
 
 export function useEarned(poolAddress) {
     const { web3, address } = useConnectWallet();
-    const [earned, setEarned] = useState(new BigNumber(0));
+    const [earned, setEarned] = useState("0");
 
     const fetchEarned = useCallback(async () => {
         const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-        const allowance = await contract.methods.earned(address).call()
-        setEarned(byDecimals(allowance))
+        const earned = await contract.methods.earned(address).call()
+        setEarned(earned)
     }, [address, setEarned, poolAddress, web3])
 
     useEffect(() => {

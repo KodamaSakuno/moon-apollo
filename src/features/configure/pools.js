@@ -14,24 +14,6 @@
 // path price:
 export const pools = [
   {
-    id: 'dai',
-    name: 'DAI',
-    token: 'DAI',
-    tokenDescription: 'DAI',
-    tokenAddress: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
-    tokenDecimals: 18,
-    itokenDecimals: 18,
-    depostLimit:0,
-    depostAlert:'',
-    tokenDescriptionUrl: '',
-    tokenDescriptionUrl2: '',
-    earnedToken: 'DAI',
-    earnedTokenAddress: '0xa38cAdD483c188F72a961b74482b14cfbc35a2CA',
-    earnContractAddress: '0xa38cAdD483c188F72a961b74482b14cfbc35a2CA',
-    defaultApy: "39.54",
-    pricePerFullShare: 1,
-    pastPricePerFullShare: 1
-  },{
     id: 'busd',
     name: 'BUSD',
     token: 'BUSD',
@@ -87,5 +69,24 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  }
+  },
+  {
+    id: 'dai',
+    name: 'DAI',
+    token: 'DAI',
+    tokenDescription: 'DAI',
+    tokenAddress: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'DAI',
+    earnedTokenAddress: '0xa38cAdD483c188F72a961b74482b14cfbc35a2CA',
+    earnContractAddress: '0xa38cAdD483c188F72a961b74482b14cfbc35a2CA',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1
+  },
 ]

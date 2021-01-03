@@ -33,13 +33,55 @@ export function useEarned(poolAddress) {
     return earned
 }
 
-export function useFetchExit() {
+export function useFetchGetReward(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
     const { enqueueSnackbar } = useSnackbar();
 
-    const handleExit = useCallback(async (poolAddress) => {
+    const handleExit = useCallback(async () => {
+        setIsPending(true);
+        try {
+            await new Promise((resolve, reject) => {
+                const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
+
+                contract.methods.getReward().send({ from: address })
+                .on('transactionHash', function(hash){
+                    dispatch(enqueueSnackbar({
+                        message: hash,
+                        options: {
+                            key: new Date().getTime() + Math.random(),
+                            variant: 'success'
+                        },
+                        hash
+                    }));
+                })
+                .on('receipt', function(receipt){
+                    resolve()
+                })
+                .on('error', function(error) {
+                    console.log(error)
+                    reject(error)
+                })
+                .catch((error) => {
+                    console.log(error)
+                    reject(error)
+                })
+            });
+        } finally {
+            setIsPending(false);
+        }
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+
+    return { isPending, onExit: handleExit };
+}
+export function useFetchExit(poolAddress) {
+    const { web3, address } = useConnectWallet();
+    const [isPending, setIsPending] = useState(false);
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const handleGetReward = useCallback(async () => {
         setIsPending(true);
         try {
             await new Promise((resolve, reject) => {
@@ -71,7 +113,7 @@ export function useFetchExit() {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar]);
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
 
-    return { isPending, onExit: handleExit };
+    return { isPending, onGetReward: handleGetReward };
 }

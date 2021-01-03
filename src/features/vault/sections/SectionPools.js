@@ -33,7 +33,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import { useSnackbar } from 'notistack';
 //  hooks
 import { useConnectWallet } from '../../home/redux/hooks';
-import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useEarned } from '../redux/hooks';
+import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned } from '../redux/hooks';
 import CustomSlider from 'components/CustomSlider/CustomSlider';
 
 import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
@@ -267,8 +267,6 @@ export default function SectionPools() {
     },200)
   }
 
-  const { onExit } = useFetchExit()
-
   return (
     <Grid container style={{paddingTop: '4px'}}>
       <Grid item xs={12}>
@@ -304,6 +302,9 @@ export default function SectionPools() {
 
             const earned = useEarned(pool.earnContractAddress)
             const formattedEarned = byDecimals(earned)
+
+            const { onExit, isPending: isExitPending } = useFetchExit(pool.earnContractAddress)
+            const { onGetReward, isPending: isGetRewardPending } = useFetchGetReward(pool.earnContractAddress)
 
             return (
                 <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
@@ -610,9 +611,26 @@ export default function SectionPools() {
                                 round
                                 type="button"
                                 color="primary"
-                                onClick={() => onExit(pool.earnContractAddress)}
+                                onClick={() => onGetReward()}
                                 >
-                                {fetchWithdrawPending[index] ? `${t('Vault-WithdrawING')}`: `${t('Vault-WithdrawButtonAll')}`}
+                                {isGetRewardPending ? `Claiming`: `Claim`}
+                            </Button>
+                            <Button
+                                style={{
+                                    width: '180px',
+                                    margin: '12px 5px',
+                                    fontSize: '14px',
+                                    fontWeight:'bold',
+                                    backgroundColor:'#353848',
+                                    color:'#635AFF',
+                                    boxShadow:'0 2px 2px 0 rgba(53, 56, 72, 0.14), 0 3px 1px -2px rgba(53, 56, 72, 0.2), 0 1px 5px 0 rgba(53, 56, 72, 0.12)',
+                                }}
+                                round
+                                type="button"
+                                color="primary"
+                                onClick={() => onExit()}
+                                >
+                                {isExitPending ? `Exiting`: `Exit`}
                             </Button>
                         </div>
                     </Grid>

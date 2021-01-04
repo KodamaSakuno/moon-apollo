@@ -23,12 +23,12 @@ export function useEarned(poolAddress) {
     }, [address, setEarned, poolAddress, web3])
 
     useEffect(() => {
-        if (address) {
+        if (web3 && address) {
             fetchEarned()
         }
         let refreshInterval = setInterval(fetchEarned, 10000)
         return () => clearInterval(refreshInterval)
-    }, [address, fetchEarned])
+    }, [web3, address, fetchEarned])
 
     return earned
 }

@@ -71,7 +71,7 @@ export function useFetchGetReward(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar]);
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
 
     return { isPending, onGetReward: handleGetReward };
 }
@@ -113,7 +113,7 @@ export function useFetchExit(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar]);
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
 
     return { isPending, onExit: handleExit };
 }

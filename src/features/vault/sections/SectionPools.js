@@ -131,8 +131,14 @@ export default function SectionPools() {
         [index]: String(forMat(balanceSingle)),
         [`slider-${index}`]: 100,
       })
+//      onDeposit(pool, index, false, balanceSingle, event);
+  //    return;
+      fetchDepositPending[index];
+      isAll = false;
     }
-    let amountValue =  depositedBalance[index]? depositedBalance[index].replace(',',''): depositedBalance[index];
+    let amountValue = depositedBalance[index] ? depositedBalance[index].replace(',',''): depositedBalance[index];
+
+  
     if (!pool.tokenAddress) {// 如果是eth
       fetchDepositEth({
         address,

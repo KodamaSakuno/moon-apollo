@@ -371,27 +371,27 @@ export default function SectionPools() {
                                 <Grid item container justify="space-between">
                                     <Hidden smDown>
                                         <Grid item xs={3} container justify='center' alignItems="center">
-                                            <Grid item style={{width: "200px"}}>
+                                            <Grid item style={{width: "200px", textAlign: "center" }}>
                                                 <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(balanceSingle)} { pool.token }</Typography>
                                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-Balance')}</Typography></Grid>
                                         </Grid>
                                     </Hidden>
                                     <Hidden mdDown>
                                         <Grid item xs={3} container justify='center' alignItems="center">
-                                            <Grid item style={{width: "200px"}}>
+                                            <Grid item style={{width: "200px", textAlign: "center"}}>
                                                 <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(singleDepositedBalance)} { pool.token }</Typography>
                                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-Deposited')}</Typography>
                                             </Grid>
                                         </Grid>
                                     </Hidden>
-                                    <Grid item xs={3} container justify='center' alignItems="center">
-                                        <Grid item>
+                                    <Grid item xs={12} md={3} container justify='center' alignItems="center">
+                                        <Grid item style={{ textAlign: "center" }}>
                                             <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(formattedEarned)} YFII</Typography>
                                             <Typography className={classes.iconContainerSubTitle} variant="body2">Earned</Typography>
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={12} md={1} container justify='center' alignItems="center">
-                                        <Grid item>
+                                    <Grid item xs={12} md={3} container justify='center' alignItems="center">
+                                        <Grid item style={{ textAlign: "center" }}>
                                             <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {depositedApy}</Typography>
                                             <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-ListAPY')}</Typography>
                                         </Grid>

@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { useEffect } from "react";
+import styled from 'styled-components'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -40,7 +41,7 @@ export default function PageNotFound({ ...rest }) {
         <div className={classes.contentCenter}>
           <GridContainer>
             <GridItem md={12}>
-              <h1 className={classes.title}>404</h1>
+              <StyledTitle className={classes.title}>404</StyledTitle>
               <h2 className={classes.subTitle}>Page not found :(</h2>
               <h4 className={classes.description}>
                 Ooooups! Looks like you got lost.
@@ -53,3 +54,9 @@ export default function PageNotFound({ ...rest }) {
     </div>
   );
 }
+
+const StyledTitle = styled.h1`
+  @media screen and (max-width: 540px ) {
+    font-size: 140px;
+  }
+`

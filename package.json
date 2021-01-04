@@ -110,6 +110,7 @@
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
     "style-loader": "^1.2.1",
+    "styled-components": "^5.2.1",
     "ts-pnp": "1.1.6",
     "url-loader": "^4.1.0",
     "web3": "1.2.11",

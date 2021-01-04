@@ -42,7 +42,7 @@ export default function StakePools(props) {
       {
         fromPage === 'page' && 
         <Hidden xsDown>
-          <GridItem>
+          <GridItem style={{ paddingLeft: 0, paddingRight: 0 }}>
             <div className={classes.listHeader}>
               <img className={classes.leftImage} src={leftImage} alt="leftImage" />
               <img className={classes.rightImage} src={rightImage} alt="rightImage" />
@@ -119,9 +119,9 @@ export default function StakePools(props) {
         </GridItem>
       </Hidden>
       <Hidden smUp>
-        <GridItem>
+        <GridItem style={{ paddingLeft: 0, paddingRight: 0 }}>
         {pools.map((pool, index) => (
-          <div key={`mobile-${index}`} className={classes.mobileContainer} style={{display: Boolean(index !== 3 && index !== 4) ? "none" : ""}}>
+          <div key={`mobile-${index}`} className={classes.mobileContainer} style={{display: Boolean(index !== 3 && index !== 4) ? "none" : "", margin: "10px 0" }}>
             <div className={classes.avatarContainer} style={{width:'80px',height:'80px',borderRadius:'40px'}}>
               <Avatar 
                 alt={pool.name}

@@ -77,7 +77,7 @@
   "Swap-Balance": "余额",
   "Swap-Max": "最大值",
   "Stake-Pool-Unstake-Hint": "抵押3天才能赎回",
-  "Stake-Pool-Unstake-Hint-Date":"赎回日期:",
+  "Stake-Pool-Unstake-Hint-Date": "赎回日期:",
   "Swap-Receive": "接收",
   "Stake-Table-Pool": "抵押池",
   "Stake-Table-Staked": "已抵押",
@@ -104,9 +104,9 @@
     "Documentation": "文档",
     "Uniswap": "Uniswap",
     "Audit": "审计报告",
-    "v1Vault":"v1 vault",
-    "oldVault":"old yfii finance",
-    "todos":"todos"
+    "v1Vault": "v1 vault",
+    "oldVault": "old yfii finance",
+    "todos": "todos"
   },
   "Farm-Main-Title": "Farm",
   "Farm-Second-Title": "持有二姨夫获得妹夫",
@@ -142,8 +142,9 @@
   "Public-Seconds": " 秒 ",
   "Liquidity-Title": "Liquidity Pools",
   "Liquidity-Main-Title": "Liquidity",
-  "Liquidity-Pair-Price":"预估提取",
+  "Liquidity-Pair-Price": "预估提取",
   "Liquidity-SnackBarText": "关于机枪池存LP的说明",
   "Liquidity-SnackBarUrl": "https://www.yuque.com/yfiicommunity/faq/mn9r5m",
-  "Liquidity-Selete":"选择币种"
+  "Liquidity-Selete": "选择币种",
+  "yfii-moon-landing": "YFII 登月版"
 }

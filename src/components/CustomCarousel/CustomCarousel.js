@@ -10,7 +10,7 @@ import ImgWePiggy from "assets/img/carousel/wepiggy.jpg";
 import ImgSFinance from "assets/img/carousel/sfinance.jpg";
 import ImgSakeSwap from "assets/img/carousel/sakeswap.jpg";
 import ImgQian from "assets/img/carousel/qian.png";
-import ImgUnisave from "assets/img/carousel/unisave.png";
+import ImgUnisave from "assets/img/carousel/unisave-new.png";
 import YFIIMoon from "assets/img/carousel/yfii-moon.png";
 
 import styles from "assets/jss/material-kit-pro-react/components/customCarouselStyle.js";
@@ -125,7 +125,7 @@ function CustomCarousel(props) {
         <div>
           <a
             className={classes.link}
-            href="https://unisave.exchange/"
+            href="https://matataki.io/p/6322"
             target="_blank"
             rel="nofollow noopener noreferrer"
           >

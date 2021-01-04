@@ -133,8 +133,8 @@ export default function SectionPools() {
       })
 //      onDeposit(pool, index, false, balanceSingle, event);
   //    return;
-      fetchDepositPending[index];
-      isAll = false;
+      // fetchDepositPending[index];
+      // isAll = false;
     }
     let amountValue = depositedBalance[index] ? depositedBalance[index].replace(',',''): depositedBalance[index];
 

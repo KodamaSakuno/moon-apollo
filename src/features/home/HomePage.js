@@ -14,6 +14,8 @@ import SectionPools from "features/vault/sections/SectionPools.js";
 // resource file
 // hooks
 
+import CustomCarousel from "components/CustomCarousel/CustomCarousel.js";
+
 export default function HomePage() {
   const { t } = useTranslation();
 
@@ -33,6 +35,7 @@ export default function HomePage() {
         close
         color="success"
       />
+      <CustomCarousel />
       <SectionPools />
     </>
   );

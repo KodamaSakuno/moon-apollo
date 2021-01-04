@@ -77,7 +77,7 @@
   "Swap-Balance": "Balance",
   "Swap-Max": "Max",
   "Stake-Pool-Unstake-Hint": "The mortgage will take three days to redeem",
-  "Stake-Pool-Unstake-Hint-Date":"วันที่ไถ่ถอน:",
+  "Stake-Pool-Unstake-Hint-Date": "วันที่ไถ่ถอน:",
   "Swap-Receive": "Receive",
   "Stake-Table-Pool": "POOL",
   "Stake-Table-Staked": "STAKED",
@@ -139,8 +139,9 @@
   "Public-Seconds": " Seconds ",
   "Liquidity-Title": "Liquidity Pools",
   "Liquidity-Main-Title": "Liquidity",
-  "Liquidity-Pair-Price":"Pairprice",
+  "Liquidity-Pair-Price": "Pairprice",
   "Liquidity-SnackBarText": "LP pool description",
   "Liquidity-SnackBarUrl": "https://www.yuque.com/yfiicommunity/faq/fkz9gm",
-  "Liquidity-Selete":"Select currency"
+  "Liquidity-Selete": "Select currency",
+  "yfii-moon-landing": "YFII Moon Landing Edition"
 }

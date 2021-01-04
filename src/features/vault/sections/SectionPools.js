@@ -33,7 +33,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import { useSnackbar } from 'notistack';
 //  hooks
 import { useConnectWallet } from '../../home/redux/hooks';
-import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned } from '../redux/hooks';
+import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned, useBalanceOf } from '../redux/hooks';
 import CustomSlider from 'components/CustomSlider/CustomSlider';
 
 import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
@@ -290,10 +290,12 @@ export default function SectionPools() {
         }}
         />
         {Boolean(networkId === Number(process.env.NETWORK_ID)) && pools.map((pool, index) => {
-            let balanceSingle = byDecimals(tokens[pool.token].tokenBalance, pool.tokenDecimals);
+            const tokenBalance = useBalanceOf(tokens[pool.token].tokenAddress);
+            let balanceSingle = byDecimals(tokenBalance, pool.tokenDecimals);
             // balanceSingle = byDecimals(random(1, 1000000), 1)
             // balanceSingle = new BigNumber(random(1, 1000000000000000))
-            let singleDepositedBalance = byDecimals(tokens[pool.earnedToken].tokenBalance, pool.itokenDecimals);
+            const depositedBalance = useBalanceOf(pool.earnContractAddress);
+            let singleDepositedBalance = byDecimals(depositedBalance, pool.itokenDecimals);
             // singleDepositedBalance = byDecimals(random(1, 1000000), 1)
             // singleDepositedBalance = new BigNumber(random(1, 1000))
             let depositedApy = contractApy[pool.id] || 0;

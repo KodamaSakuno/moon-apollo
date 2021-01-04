@@ -25,7 +25,7 @@ const useStyles = makeStyles(appStyle);
 export default function App({ children }) {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { connectWallet, web3, address, networkId, connected, connectWalletPending } = useConnectWallet();
+  const { connectWallet, web3, address, networkId, connected } = useConnectWallet();
   const { disconnectWallet } = useDisconnectWallet();
   const [ web3Modal, setModal ] = useState(null)
 
@@ -51,7 +51,7 @@ export default function App({ children }) {
     setModal(newModal)
   }, [setModal])
 
-  
+
 
   useEffect(() => {
     if (web3Modal && (web3Modal.cachedProvider || window.ethereum)) {
@@ -59,11 +59,11 @@ export default function App({ children }) {
     }
   }, [web3Modal, connectWallet])
 
-  useEffect(() => {
-    if (web3 && address && !connectWalletPending && networkId && Boolean(networkId !== Number(process.env.NETWORK_ID))) {
-      alert(t('App-SnackBarText'))
-    }
-  }, [web3, address, networkId, connectWalletPending, t])
+  // useEffect(() => {
+  //   if (web3 && address && !connectWalletPending && networkId && (Boolean(networkId !== 56) && Boolean(networkId !== 128))) {
+  //     alert(t('App-SnackBarText'))
+  //   }
+  // }, [web3, address, networkId, connectWalletPending, t])
 
   return (
     <SnackbarProvider>
@@ -83,7 +83,7 @@ export default function App({ children }) {
         />
         <div className={classes.container}>
             <div className={classes.children}>
-              {Boolean(networkId === Number(process.env.NETWORK_ID)) && children}
+              {(Boolean(networkId === 56) || Boolean(networkId === 128)) && children}
               <Notifier />
             </div>
           <FooterLinks />

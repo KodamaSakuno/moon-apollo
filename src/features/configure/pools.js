@@ -14,6 +14,7 @@
 // path price:
 export const pools = [
   {
+    chainId: 56,
     id: 'busd',
     name: 'BUSD',
     token: 'BUSD',
@@ -33,6 +34,7 @@ export const pools = [
     pastPricePerFullShare: 1
   },
   {
+    chainId: 56,
     id: 'usdt',
     name: 'USDT',
     token: 'USDT',
@@ -52,6 +54,7 @@ export const pools = [
     pastPricePerFullShare: 1
   },
   {
+    chainId: 56,
     id: 'usdc',
     name: 'USDC',
     token: 'USDC',
@@ -71,6 +74,7 @@ export const pools = [
     pastPricePerFullShare: 1
   },
   {
+    chainId: 56,
     id: 'dai',
     name: 'DAI',
     token: 'DAI',
@@ -85,6 +89,26 @@ export const pools = [
     earnedToken: 'YFII',
     earnedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
     earnContractAddress: '0xa38cAdD483c188F72a961b74482b14cfbc35a2CA',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1
+  },
+  {
+    chainId: 128,
+    id: 'husd',
+    name: 'HUSD',
+    token: 'HUSD',
+    tokenDescription: 'HUSD',
+    tokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'HUSD',
+    earnedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
+    earnContractAddress: '0x902f551edc28ccfa5d2f84f10f8acb50d6b00613',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1

@@ -72,12 +72,12 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
       }
     }
 
-    const handleDepositedBalance = (index,total,event,sliderNum) => {
-      setBalanceToDeposit(sliderNum == 0 ? '0': calculateReallyNum(total,sliderNum));
+    const handleDepositedBalance = (index,total,tokenDecimals,event,sliderNum) => {
+      setBalanceToDeposit(sliderNum == 0 ? '0': byDecimals(new BigNumber(total).times(sliderNum).div(100), tokenDecimals));
       setBalanceToDepositSlider(sliderNum);
     }
-    const handleWithdrawAmount = (index,total,event,sliderNum) => {
-      setBalanceToWithdraw(sliderNum == 0 ? '0': calculateReallyNum(total,sliderNum));
+    const handleWithdrawAmount = (index,total,tokenDecimals,event,sliderNum) => {
+      setBalanceToWithdraw(sliderNum == 0 ? '0': byDecimals(new BigNumber(total).times(sliderNum).div(100), tokenDecimals));
       setBalanceToWithdrawSlider(sliderNum);
     };
 
@@ -100,7 +100,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
             }}
             aria-labelledby="continuous-slider"
             value={balanceToDepositSlider}
-            onChange={handleDepositedBalance.bind(this,index,balanceSingle)}
+            onChange={handleDepositedBalance.bind(this,index,tokenBalance,pool.tokenDecimals)}
           />
 
               <div>
@@ -175,7 +175,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
                   }}
                   aria-labelledby="continuous-slider"
                   value={balanceToWithdrawSlider}
-                  onChange={handleWithdrawAmount.bind(this,index,singleDepositedBalance)}
+                  onChange={handleWithdrawAmount.bind(this,index,depositedBalance,pool.tokenDecimals)}
                   />
               <div className={classes.showDetailButtonCon}>
                   <Button

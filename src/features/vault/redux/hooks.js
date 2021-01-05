@@ -170,7 +170,7 @@ export function useDeposit(poolAddress, tokenAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress]);
 
     return { isPending, onDeposit: handleDeposit };
 }

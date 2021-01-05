@@ -40,14 +40,15 @@ import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
 import { reflect } from 'async';
 import { inputLimitPass,inputFinalVal,isEmpty } from 'features/helpers/utils';
 import CustomDialog from 'components/CustomDialog/CustomDialog';
+import PoolHeader from './PoolHeader'
+import PoolContent from './PoolContent';
 
 const useStyles = makeStyles(sectionPoolsStyle);
 
 export default function SectionPools() {
   const { t, i18n } = useTranslation();
   const { web3, address, networkId } = useConnectWallet();
-  let { pools: rawPools } = useFetchPoolBalances();
-  const pools = useMemo(() => rawPools ? rawPools.filter(pool => pool.chainId === networkId): [], [rawPools, networkId])
+  let { pools } = useFetchPoolBalances();
   const [ openedCardList, setOpenCardList ] = useState([0]);
   const [ openDialog, setOpenDialog] = useState(false);
   const [ waitDialogConfirmJson, setWaitDialogConfirmJson] = useState({'content':'','func':()=>{}});
@@ -283,6 +284,33 @@ export default function SectionPools() {
           }
         }}
         />
+        {networkId}
+        {pools.filter(pool => pool.chainId === networkId).map((pool, index) => (
+          <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
+            <div style={{width: "100%"}}>
+              <Accordion
+                  expanded={Boolean(openedCardList.includes(index))}
+                  className={classes.accordion}
+                  TransitionProps={{ unmountOnExit: true }}
+              >
+                <AccordionSummary
+                    className={classes.details}
+                    style={{ justifyContent: "space-between"}}
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        openCard(index)
+                    }}
+                >
+                  <PoolHeader index={index} pool={pool} classes={classes} openedCardList={openedCardList} openCard={openCard} />
+                </AccordionSummary>
+                <AccordionDetails style={{ justifyContent: "space-between"}}>
+                  <PoolContent index={index} pool={pool} classes={classes} openedCardList={openedCardList} openCard={openCard} />
+                </AccordionDetails>
+              </Accordion>
+            </div>
+          </Grid>
+        ))}
+        {/*
         { pools.map((pool, index) => {
             const tokenBalance = useBalanceOf(pool.tokenAddress);
             let balanceSingle = byDecimals(tokenBalance, pool.tokenDecimals);
@@ -640,6 +668,7 @@ export default function SectionPools() {
             </Grid>
           )
         })}
+        //*/}
 
     </Grid>
   )

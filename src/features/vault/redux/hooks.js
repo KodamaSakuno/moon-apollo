@@ -11,6 +11,49 @@ export { useFetchDeposit } from './fetchDeposit';
 export { useFetchWithdraw } from './fetchWithdraw';
 export { useFetchContractApy } from './fetchContractApy';
 
+export function useApprove(tokenAddress, poolAddress) {
+    const { web3, address } = useConnectWallet();
+    const [isPending, setIsPending] = useState(false);
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const handleApprove = useCallback(async () => {
+        setIsPending(true);
+        try {
+            await new Promise((resolve, reject) => {
+                const contract = new web3.eth.Contract(erc20ABI, tokenAddress);
+
+                contract.methods.approve(tokenAddress, poolAddress).send({ from: address })
+                .on('transactionHash', function(hash){
+                    dispatch(enqueueSnackbar({
+                        message: hash,
+                        options: {
+                            key: new Date().getTime() + Math.random(),
+                            variant: 'success'
+                        },
+                        hash
+                    }));
+                })
+                .on('receipt', function(receipt){
+                    resolve()
+                })
+                .on('error', function(error) {
+                    console.log(error)
+                    reject(error)
+                })
+                .catch((error) => {
+                    console.log(error)
+                    reject(error)
+                })
+            });
+        } finally {
+            setIsPending(false);
+        }
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress, tokenAddress]);
+
+    return { isPending, onApprove: handleApprove };
+  }
+
 export function useAllowance(tokenAddress, spender) {
     const { web3, address } = useConnectWallet();
     const [allowance, setAllowance] = useState("0");
@@ -77,6 +120,91 @@ export function useEarned(poolAddress) {
     return earned
 }
 
+
+export function useDeposit(poolAddress) {
+    const { web3, address } = useConnectWallet();
+    const [isPending, setIsPending] = useState(false);
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const handleDeposit = useCallback(async (amount) => {
+        setIsPending(true);
+        try {
+            await new Promise((resolve, reject) => {
+                const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
+
+                contract.methods.deposit(amount).send({ from: address })
+                .on('transactionHash', function(hash){
+                    dispatch(enqueueSnackbar({
+                        message: hash,
+                        options: {
+                            key: new Date().getTime() + Math.random(),
+                            variant: 'success'
+                        },
+                        hash
+                    }));
+                })
+                .on('receipt', function(receipt){
+                    resolve()
+                })
+                .on('error', function(error) {
+                    console.log(error)
+                    reject(error)
+                })
+                .catch((error) => {
+                    console.log(error)
+                    reject(error)
+                })
+            });
+        } finally {
+            setIsPending(false);
+        }
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+
+    return { isPending, onDeposit: handleDeposit };
+}
+export function useWithdraw(poolAddress) {
+    const { web3, address } = useConnectWallet();
+    const [isPending, setIsPending] = useState(false);
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const handleWithdraw = useCallback(async (amount) => {
+        setIsPending(true);
+        try {
+            await new Promise((resolve, reject) => {
+                const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
+
+                contract.methods.withdraw(amount).send({ from: address })
+                .on('transactionHash', function(hash){
+                    dispatch(enqueueSnackbar({
+                        message: hash,
+                        options: {
+                            key: new Date().getTime() + Math.random(),
+                            variant: 'success'
+                        },
+                        hash
+                    }));
+                })
+                .on('receipt', function(receipt){
+                    resolve()
+                })
+                .on('error', function(error) {
+                    console.log(error)
+                    reject(error)
+                })
+                .catch((error) => {
+                    console.log(error)
+                    reject(error)
+                })
+            });
+        } finally {
+            setIsPending(false);
+        }
+    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+
+    return { isPending, onWithdraw: handleWithdraw };
+}
 export function useFetchGetReward(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);

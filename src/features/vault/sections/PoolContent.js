@@ -85,12 +85,12 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
       <Grid container style={{width: "100%", marginLeft: 0, marginRight: 0}}>
         <Grid item xs={12} sm={6} className={classes.sliderDetailContainer}>
           <div className={classes.showDetailRight}>
-                {t('Vault-Balance')}:{balanceSingle.toFormat(4)} { pool.token }
+                {t('Vault-Balance')}:{forMat(balanceSingle)} { pool.token }
           </div>
           <FormControl fullWidth variant="outlined">
               <CustomOutlinedInput
                   value={balanceToDeposit}
-                  onChange={changeDetailInputValue.bind(this,'depositedBalance',index,balanceSingle.toNumber(),pool.tokenDecimals)}
+                  onChange={changeDetailInputValue.bind(this,'depositedBalance',index,balanceSingle,pool.tokenDecimals)}
                   />
           </FormControl>
           <CustomSlider
@@ -100,7 +100,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
             }}
             aria-labelledby="continuous-slider"
             value={balanceToDepositSlider}
-            onChange={handleDepositedBalance.bind(this,index,balanceSingle.toNumber())}
+            onChange={handleDepositedBalance.bind(this,index,balanceSingle)}
           />
 
               <div>
@@ -147,7 +147,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
                                       });
                                       setOpenDialog(true);
                                     }else{
-                                      onDeposit(new BigNumber(balanceToDeposit).multipliedBy(new BigNumber(10).exponentiatedBy(pool.tokenDecimals)).toString(10))
+                                      onDeposit(balanceToDepositSlider >= 100 ? tokenBalance : new BigNumber(balanceToDeposit).multipliedBy(new BigNumber(10).exponentiatedBy(pool.tokenDecimals)).toString(10))
                                     }
                                   }}
                                   >{t('Vault-DepositButton')}
@@ -160,12 +160,12 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
 
           <Grid item xs={12} sm={6} className={classes.sliderDetailContainer}>
               <div className={classes.showDetailRight}>
-                      {singleDepositedBalance.toFormat(4)} { pool.earnedToken }
+                      {forMat(singleDepositedBalance)} { pool.earnedToken }
                   </div>
               <FormControl fullWidth variant="outlined">
                   <CustomOutlinedInput
                       value={balanceToWithdraw}
-                      onChange={changeDetailInputValue.bind(this,'withdrawAmount',index,singleDepositedBalance.toNumber(),pool.itokenDecimals)}
+                      onChange={changeDetailInputValue.bind(this,'withdrawAmount',index,singleDepositedBalance,pool.itokenDecimals)}
                       />
               </FormControl>
               <CustomSlider
@@ -175,7 +175,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
                   }}
                   aria-labelledby="continuous-slider"
                   value={balanceToWithdrawSlider}
-                  onChange={handleWithdrawAmount.bind(this,index,singleDepositedBalance.toNumber())}
+                  onChange={handleWithdrawAmount.bind(this,index,singleDepositedBalance)}
                   />
               <div className={classes.showDetailButtonCon}>
                   <Button
@@ -192,7 +192,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
                       type="button"
                       color="primary"
                       disabled={isWithdarwPending}
-                      onClick={() => onWithdraw(new BigNumber(balanceToWithdraw).multipliedBy(new BigNumber(10).exponentiatedBy(pool.tokenDecimals)).toString(10))}
+                      onClick={() => onWithdraw(balanceToWithdrawSlider >= 100 ? depositedBalance : new BigNumber(balanceToWithdraw).multipliedBy(new BigNumber(10).exponentiatedBy(pool.tokenDecimals)).toString(10))}
                       >
                       {isWithdarwPending ? `${t('Vault-WithdrawING')}`: `${t('Vault-WithdrawButton')}`}
                   </Button>

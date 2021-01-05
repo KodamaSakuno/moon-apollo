@@ -13,6 +13,7 @@
 // price ： 挖的代币的价格！
 // path price:
 export const pools = [
+  /*
   {
     chainId: 56,    
     id: 'bnb',
@@ -53,7 +54,7 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  },
+  },*/
   {
     chainId: 56,
     id: 'busd',
@@ -119,6 +120,47 @@ export const pools = [
   },
 
   //Heco
+  {
+    chainId: 128,    
+    id: 'ht',
+    name: 'HT',  
+    token: 'HT',
+    tokenDescription: 'HT',
+    tokenAddress: '',    
+    tokenAddress: '',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'iWHT',
+    earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1
+  },
+  {
+    chainId: 128,    
+    id: 'wht',
+    name: 'WHT',  
+    token: 'WHT',
+    tokenDescription: 'WHT',
+    tokenAddress: '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    // depostAlert:'Vault-Dialog-Content',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'iWHT',
+    earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1
+  },
   {
     chainId: 128,
     id: 'husd',

@@ -38,7 +38,7 @@ export default () => {
           const lpTokens = isLP ? token.split('/') : [];
 
           return (
-            <Grid item sm={6} key={index}>
+            <Grid item sm={6} key={index} style={{ width: '100%' }}>
               <div style={{background: `rgba(${color},0.5)`}} className={classNames({
                 [classes.flexColumnCenter]: true,
                 [classes.farmItem]: true

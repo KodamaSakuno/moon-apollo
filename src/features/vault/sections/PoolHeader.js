@@ -35,6 +35,8 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
     const earned = useEarned(pool.earnContractAddress)
     const formattedEarned = byDecimals(earned)
 
+    const { contractApy } = useFetchContractApy();
+
     return (
         <Grid container alignItems="center" justify="space-around" spacing={4} style={{paddingTop: "16px", paddingBottom: "16px"}}>
                 <Grid item>
@@ -104,7 +106,7 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
                         </Grid>
                         <Grid item xs={12} md={3} container justify='center' alignItems="center">
                             <Grid item style={{ textAlign: "center" }}>
-                                {/* <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {depositedApy}</Typography> */}
+                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {contractApy[pool.id] || 0}</Typography>
                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-ListAPY')}</Typography>
                             </Grid>
                         </Grid>

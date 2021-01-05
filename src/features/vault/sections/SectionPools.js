@@ -227,9 +227,9 @@ export default function SectionPools() {
     return true;
   }
 
-  // useEffect(() => {
-  //   fetchContractApy();
-  // }, [pools, fetchContractApy]);
+  useEffect(() => {
+    fetchContractApy();
+  }, [pools, fetchContractApy]);
 
   const forMat = number => {
     return new BigNumber(

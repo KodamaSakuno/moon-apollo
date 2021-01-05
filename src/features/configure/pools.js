@@ -120,7 +120,6 @@ export const pools = [
   },
 
   //Heco
-  /*
   {
     chainId: 128,    
     id: 'ht',
@@ -135,13 +134,13 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'iHT',
+    earnedToken: 'HUSD',
     earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
     earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  },*/
+  },
   {
     chainId: 128,    
     id: 'wht',
@@ -155,7 +154,7 @@ export const pools = [
     // depostAlert:'Vault-Dialog-Content',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'iWHT',
+    earnedToken: 'HUSD',
     earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
     earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
     defaultApy: "39.54",

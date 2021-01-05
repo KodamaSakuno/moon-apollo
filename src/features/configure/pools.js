@@ -33,7 +33,6 @@ export const pools = [
     defaultApy: "42.63",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-    visibility: 1
   },
   {
     chainId: 56,
@@ -55,7 +54,6 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-    visibility: 1
   },
   {
     chainId: 56,
@@ -77,7 +75,6 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-    visibility: 1
   },
 
   //Heco
@@ -95,13 +92,36 @@ export const pools = [
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
     earnedToken: 'HUSD',
-    claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
+    claimedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
     earnedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
     earnContractAddress: '0x902f551edc28ccfa5d2f84f10f8acb50d6b00613',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-    visibility: 1
   },
+  {
+    chainId: 128,
+    id: 'hbtc',
+    name: 'HBTC',
+    token: 'HBTC',
+    tokenDescription: 'HBTC',
+    tokenAddress: '0x66a79d23e58475d2738179ca52cd0b41d73f0bea',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'HUSD',
+    claimedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
+    earnedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
+    earnContractAddress: '0xf86cf20d33dc24ab83e03b838db7f8df15ba647b',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1,
+  },  
+
+
+  
 
 ]

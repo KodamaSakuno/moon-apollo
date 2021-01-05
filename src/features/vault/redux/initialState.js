@@ -3,6 +3,7 @@ import { pools } from "../../configure";
 const tokens = {
   56: {},
   128: {},
+  1: {},
 };
 
 pools.map(({chainId, token, tokenAddress, earnedToken, earnedTokenAddress})=> {

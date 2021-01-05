@@ -83,7 +83,7 @@ export default function App({ children }) {
         />
         <div className={classes.container}>
             <div className={classes.children}>
-              {(Boolean(networkId === 56) || Boolean(networkId === 128)) && children}
+              {children}
               <Notifier />
             </div>
           <FooterLinks />

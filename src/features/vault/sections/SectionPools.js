@@ -283,7 +283,7 @@ export default function SectionPools() {
           }
         }}
         />
-        {(Boolean(networkId === 56) || Boolean(networkId === 128)) && pools.map((pool, index) => {
+        { pools.map((pool, index) => {
             const tokenBalance = useBalanceOf(pool.tokenAddress);
             let balanceSingle = byDecimals(tokenBalance, pool.tokenDecimals);
             // balanceSingle = byDecimals(random(1, 1000000), 1)

@@ -1,7 +1,7 @@
 import { erc20ABI, LunarModuleAbi } from 'features/configure/abi';
 import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSnackbar } from 'notistack';
+import { enqueueSnackbar } from '../../common/redux/actions';
 
 import { useConnectWallet } from '../../home/redux/hooks';
 export { useFetchBalances } from './fetchBalances';
@@ -15,7 +15,7 @@ export function useApprove(tokenAddress, poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleApprove = useCallback(async () => {
         setIsPending(true);
@@ -49,7 +49,7 @@ export function useApprove(tokenAddress, poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress, tokenAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress]);
 
     return { isPending, onApprove: handleApprove };
   }
@@ -125,7 +125,7 @@ export function useDeposit(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleDeposit = useCallback(async (amount) => {
         setIsPending(true);
@@ -159,7 +159,7 @@ export function useDeposit(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress]);
 
     return { isPending, onDeposit: handleDeposit };
 }
@@ -167,7 +167,7 @@ export function useWithdraw(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleWithdraw = useCallback(async (amount) => {
         setIsPending(true);
@@ -201,7 +201,7 @@ export function useWithdraw(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress]);
 
     return { isPending, onWithdraw: handleWithdraw };
 }
@@ -209,7 +209,7 @@ export function useFetchGetReward(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleGetReward = useCallback(async () => {
         setIsPending(true);
@@ -243,7 +243,7 @@ export function useFetchGetReward(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress]);
 
     return { isPending, onGetReward: handleGetReward };
 }
@@ -251,7 +251,7 @@ export function useFetchExit(poolAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleExit = useCallback(async () => {
         setIsPending(true);
@@ -285,7 +285,7 @@ export function useFetchExit(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, enqueueSnackbar, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress]);
 
     return { isPending, onExit: handleExit };
 }

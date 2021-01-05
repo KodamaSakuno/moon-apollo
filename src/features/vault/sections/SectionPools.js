@@ -284,7 +284,6 @@ export default function SectionPools() {
           }
         }}
         />
-        {networkId}
         {pools.filter(pool => pool.chainId === networkId).map((pool, index) => (
           <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
             <div style={{width: "100%"}}>

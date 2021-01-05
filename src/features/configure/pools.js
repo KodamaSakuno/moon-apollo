@@ -120,6 +120,7 @@ export const pools = [
   },
 
   //Heco
+  /*
   {
     chainId: 128,    
     id: 'ht',
@@ -140,7 +141,7 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  },
+  },*/
   {
     chainId: 128,    
     id: 'wht',

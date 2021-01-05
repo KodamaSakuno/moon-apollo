@@ -25,7 +25,7 @@ const useStyles = makeStyles(appStyle);
 export default function App({ children }) {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { connectWallet, web3, address, networkId, connected } = useConnectWallet();
+  const { connectWallet, web3, address, connected } = useConnectWallet();
   const { disconnectWallet } = useDisconnectWallet();
   const [ web3Modal, setModal ] = useState(null)
 

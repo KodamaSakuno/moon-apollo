@@ -29,10 +29,10 @@ export function fetchPairPriceOut(amountString, poolIndex, tokenIndex) {
       const { pairPriceToken, name, canDepositTokenList } = pools[poolIndex];
       if( canDepositTokenList[tokenIndex].includes(' lp') || amountString===0){
         if(amountString===0) amountString = Number(amountString)
-        return dispatch({
+        dispatch({
           type: LIQUIDITY_FETCH_PAIR_PRICE_OUT_DONT_REQUEST,
           data: amountString,
-          poolIndex, 
+          poolIndex,
         });
         resolve(amountString);
       }
@@ -47,7 +47,7 @@ export function fetchPairPriceOut(amountString, poolIndex, tokenIndex) {
           dispatch({
             type: LIQUIDITY_FETCH_PAIR_PRICE_OUT_SUCCESS,
             data: newData,
-            poolIndex, 
+            poolIndex,
           });
           resolve(newData);
         },
@@ -56,7 +56,7 @@ export function fetchPairPriceOut(amountString, poolIndex, tokenIndex) {
         error => {
           dispatch({
             type: LIQUIDITY_FETCH_PAIR_PRICE_OUT_FAILURE,
-            poolIndex, 
+            poolIndex,
           });
           reject(error.message || error);
         }

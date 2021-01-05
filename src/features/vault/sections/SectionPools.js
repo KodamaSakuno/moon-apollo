@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import BigNumber from "bignumber.js";
 import {byDecimals,calculateReallyNum} from 'features/helpers/bignumber';
@@ -33,7 +33,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import { useSnackbar } from 'notistack';
 //  hooks
 import { useConnectWallet } from '../../home/redux/hooks';
-import { useFetchBalances, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned, useBalanceOf } from '../redux/hooks';
+import { useAllowance, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned, useBalanceOf } from '../redux/hooks';
 import CustomSlider from 'components/CustomSlider/CustomSlider';
 
 import sectionPoolsStyle from "../jss/sections/sectionPoolsStyle";
@@ -46,8 +46,8 @@ const useStyles = makeStyles(sectionPoolsStyle);
 export default function SectionPools() {
   const { t, i18n } = useTranslation();
   const { web3, address, networkId } = useConnectWallet();
-  let { pools, fetchPoolBalances } = useFetchPoolBalances();
-  const { tokens, fetchBalances } = useFetchBalances();
+  let { pools: rawPools } = useFetchPoolBalances();
+  const pools = useMemo(() => rawPools ? rawPools.filter(pool => pool.chainId === networkId): [], [rawPools, networkId])
   const [ openedCardList, setOpenCardList ] = useState([0]);
   const [ openDialog, setOpenDialog] = useState(false);
   const [ waitDialogConfirmJson, setWaitDialogConfirmJson] = useState({'content':'','func':()=>{}});
@@ -131,8 +131,14 @@ export default function SectionPools() {
         [index]: String(forMat(balanceSingle)),
         [`slider-${index}`]: 100,
       })
+//      onDeposit(pool, index, false, balanceSingle, event);
+  //    return;
+      // fetchDepositPending[index];
+      // isAll = false;
     }
-    let amountValue =  depositedBalance[index]? depositedBalance[index].replace(',',''): depositedBalance[index];
+    let amountValue = depositedBalance[index] ? depositedBalance[index].replace(',',''): depositedBalance[index];
+
+
     if (!pool.tokenAddress) {// 如果是eth
       fetchDepositEth({
         address,
@@ -213,18 +219,6 @@ export default function SectionPools() {
     )
   }
 
-  useEffect(() => {
-    if (address && web3) {
-      fetchBalances({address, web3, tokens});
-      fetchPoolBalances({address, web3, pools});
-      const id = setInterval(() => {
-        fetchBalances({address, web3, tokens});
-        fetchPoolBalances({address, web3, pools});
-      }, 10000);
-      return () => clearInterval(id);
-    }
-  }, [address, web3, fetchBalances, fetchPoolBalances]);
-
   const isMoreDepostLimit = (value,depostLimit) => {
     if(isEmpty(value) ||  depostLimit==0 || value < depostLimit){
       return false
@@ -232,9 +226,9 @@ export default function SectionPools() {
     return true;
   }
 
-  useEffect(() => {
-    fetchContractApy();
-  }, [pools, fetchContractApy]);
+  // useEffect(() => {
+  //   fetchContractApy();
+  // }, [pools, fetchContractApy]);
 
   const forMat = number => {
     return new BigNumber(
@@ -289,8 +283,8 @@ export default function SectionPools() {
           }
         }}
         />
-        {Boolean(networkId === Number(process.env.NETWORK_ID)) && pools.map((pool, index) => {
-            const tokenBalance = useBalanceOf(tokens[pool.token].tokenAddress);
+        {(Boolean(networkId === 56) || Boolean(networkId === 128)) && pools.map((pool, index) => {
+            const tokenBalance = useBalanceOf(pool.tokenAddress);
             let balanceSingle = byDecimals(tokenBalance, pool.tokenDecimals);
             // balanceSingle = byDecimals(random(1, 1000000), 1)
             // balanceSingle = new BigNumber(random(1, 1000000000000000))
@@ -301,6 +295,8 @@ export default function SectionPools() {
             let depositedApy = contractApy[pool.id] || 0;
             // depositedApy = random(0, 1)
             // depositedApy =byDecimals(random(0, 100), 1)
+
+            const allowance = useAllowance(pool.tokenAddress, pool.earnContractAddress)
 
             const earned = useEarned(pool.earnContractAddress)
             const formattedEarned = byDecimals(earned)
@@ -384,9 +380,9 @@ export default function SectionPools() {
                                             </Grid>
                                         </Grid>
                                     </Hidden>
-                                    <Grid item xs={12} md={3} container justify='center' alignItems="center">
+                                    <Grid item xs={3} container justify='center' alignItems="center">
                                         <Grid item style={{ textAlign: "center" }}>
-                                            <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(formattedEarned)} YFII</Typography>
+                                            <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{forMat(formattedEarned)} { pool.earnedToken }</Typography>
                                             <Typography className={classes.iconContainerSubTitle} variant="body2">Earned</Typography>
                                         </Grid>
                                     </Grid>
@@ -480,7 +476,7 @@ export default function SectionPools() {
 
                         <div>
                             {
-                                pool.allowance === 0 ? (
+                                allowance === '0' ? (
                                     <div className={classes.showDetailButtonCon}>
                                         <Button
                                             style={{
@@ -564,7 +560,7 @@ export default function SectionPools() {
 
                     <Grid item xs={12} sm={6} className={classes.sliderDetailContainer}>
                         <div className={classes.showDetailRight}>
-                                {singleDepositedBalance.multipliedBy(new BigNumber(pool.pricePerFullShare)).toFormat(4)} { pool.token } ({singleDepositedBalance.toFormat(4)} { pool.earnedToken })
+                                {singleDepositedBalance.toFormat(4)} { pool.earnedToken }
                             </div>
                         <FormControl fullWidth variant="outlined">
                             <CustomOutlinedInput

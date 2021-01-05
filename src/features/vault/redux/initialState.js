@@ -1,13 +1,16 @@
 import { pools } from "../../configure";
 
-const tokens = {};
+const tokens = {
+  56: {},
+  128: {},
+};
 
-pools.map(({token, tokenAddress, earnedToken, earnedTokenAddress})=> {
-  tokens[token] = {
+pools.map(({chainId, token, tokenAddress, earnedToken, earnedTokenAddress})=> {
+  tokens[chainId][token] = {
     tokenAddress: tokenAddress,
     tokenBalance: 0
   }
-  tokens[earnedToken] = {
+  tokens[chainId][earnedToken] = {
     tokenAddress: earnedTokenAddress,
     tokenBalance: 0
   }

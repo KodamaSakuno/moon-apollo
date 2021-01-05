@@ -11,6 +11,28 @@ export { useFetchDeposit } from './fetchDeposit';
 export { useFetchWithdraw } from './fetchWithdraw';
 export { useFetchContractApy } from './fetchContractApy';
 
+export function useAllowance(tokenAddress, spender) {
+    const { web3, address } = useConnectWallet();
+    const [allowance, setAllowance] = useState("0");
+
+    const fetchAllowance = useCallback(async () => {
+        const contract = new web3.eth.Contract(erc20ABI, tokenAddress);
+
+        const allowance = await contract.methods.allowance(address, spender).call()
+        setAllowance(allowance)
+    }, [address, spender, setAllowance, tokenAddress, web3])
+
+    useEffect(() => {
+        if (web3 && address) {
+            fetchAllowance()
+        }
+        let refreshInterval = setInterval(fetchAllowance, 10000)
+        return () => clearInterval(refreshInterval)
+    }, [web3, address, fetchAllowance])
+
+    return allowance
+}
+
 export function useBalanceOf(tokenAddress) {
     const { web3, address } = useConnectWallet();
     const [balance, setBalance] = useState("0");
@@ -18,8 +40,8 @@ export function useBalanceOf(tokenAddress) {
     const fetchBalance = useCallback(async () => {
         const contract = new web3.eth.Contract(erc20ABI, tokenAddress);
 
-        const earned = await contract.methods.balanceOf(address).call()
-        setBalance(earned)
+        const balance = await contract.methods.balanceOf(address).call()
+        setBalance(balance)
     }, [address, setBalance, tokenAddress, web3])
 
     useEffect(() => {

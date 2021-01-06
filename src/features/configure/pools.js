@@ -15,12 +15,12 @@
 export const pools = [
   /*
   {
-    chainId: 56,    
+    chainId: 56,
     id: 'bnb',
-    name: 'BNB',  
+    name: 'BNB',
     token: 'BNB',
     tokenDescription: 'BNB',
-    tokenAddress: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',    
+    tokenAddress: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
     tokenAddress: '',
     tokenDecimals: 18,
     itokenDecimals: 18,
@@ -36,9 +36,9 @@ export const pools = [
     pastPricePerFullShare: 1
   },
   {
-    chainId: 56,    
+    chainId: 56,
     id: 'wbnb',
-    name: 'WBNB',  
+    name: 'WBNB',
     token: 'WBNB',
     tokenDescription: 'WBNB',
     tokenAddress: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
@@ -121,12 +121,11 @@ export const pools = [
 
   //Heco
   {
-    chainId: 128,    
+    chainId: 128,
     id: 'ht',
-    name: 'HT',  
+    name: 'HT',
     token: 'HT',
     tokenDescription: 'HT',
-    tokenAddress: '',    
     tokenAddress: '',
     tokenDecimals: 18,
     itokenDecimals: 18,
@@ -142,9 +141,9 @@ export const pools = [
     pastPricePerFullShare: 1
   },
   {
-    chainId: 128,    
+    chainId: 128,
     id: 'wht',
-    name: 'WHT',  
+    name: 'WHT',
     token: 'WHT',
     tokenDescription: 'WHT',
     tokenAddress: '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',
@@ -202,9 +201,9 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  },  
+  },
 
 
-  
+
 
 ]

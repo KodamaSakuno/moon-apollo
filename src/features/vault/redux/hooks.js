@@ -24,7 +24,7 @@ export function useApprove(tokenAddress, poolAddress) {
             await new Promise((resolve, reject) => {
                 const contract = new web3.eth.Contract(erc20ABI, tokenAddress);
 
-                contract.methods.approve(tokenAddress, poolAddress).send({ from: address })
+                contract.methods.approve(poolAddress, ethers.constants.MaxUint256.toString(10)).send({ from: address })
                 .on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,

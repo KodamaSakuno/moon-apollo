@@ -119,7 +119,8 @@ export const pools = [
     pastPricePerFullShare: 1,
   },
 
-  //Heco
+  //Heco 
+  /*
   {
     chainId: 128,
     id: 'ht',
@@ -159,7 +160,7 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  },
+  },*/
   {
     chainId: 128,
     id: 'husd',
@@ -180,7 +181,7 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  },
+  },/*
   {
     chainId: 128,
     id: 'hbtc',
@@ -202,8 +203,7 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
-
-
+*/
 
 
 ]

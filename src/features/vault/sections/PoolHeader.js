@@ -37,8 +37,9 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
 
     const { contractApy } = useFetchContractApy();
 
-    const [husdAPYLeft, husdAPYRight] = ["53.24%", "214.34"];
-
+    const [husdAPYLeft, husdAPYRight] = ["24.24%", "114.34"];
+    const [udstAPYLeft, udstAPYRight] = ["63.60%", "84.15"];
+s
     return (
         <Grid container alignItems="center" justify="space-around" spacing={4} style={{paddingTop: "16px", paddingBottom: "16px"}}>
                 <Grid item>
@@ -108,7 +109,8 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
                         </Grid>
                         <Grid item xs={12} md={3} container justify='center' alignItems="center">
                             <Grid item style={{ textAlign: "center" }}>
-                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {pool.token !== 'HUSD' ? (contractApy[pool.id] || 0) : (
+                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {pool.token !== 'HUSD' ? (
+                                  pool.token !== 'USDT' ? `${usdtAPYLeft} ~ ${usdtAPYRight}` : contractApy[pool.id] || 0) : (
                                   `${husdAPYLeft} ~ ${husdAPYRight}`
                                 )}</Typography>
                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-ListAPY')}</Typography>

@@ -32,7 +32,7 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
     let balanceSingle = byDecimals(tokenBalance, pool.tokenDecimals);
     const depositedBalance = useBalanceOf(pool.earnContractAddress);
     let singleDepositedBalance = byDecimals(depositedBalance, pool.itokenDecimals);
-    const earned = useEarned(pool.earnContractAddress)
+    const earned = useEarned(pool.claimedTokenAddress)
     const formattedEarned = byDecimals(earned)
 
     const { contractApy } = useFetchContractApy();

@@ -6,13 +6,13 @@ const tokens = {
   1: {},
 };
 
-pools.map(({chainId, token, tokenAddress, earnedToken, earnedTokenAddress})=> {
+pools.map(({chainId, token, tokenAddress, earnedToken, claimedTokenAddress})=> {
   tokens[chainId][token] = {
     tokenAddress: tokenAddress,
     tokenBalance: 0
   }
   tokens[chainId][earnedToken] = {
-    tokenAddress: earnedTokenAddress,
+    tokenAddress: claimedTokenAddress,
     tokenBalance: 0
   }
   return '';

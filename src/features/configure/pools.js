@@ -68,7 +68,7 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'BUSD',
+    earnedToken: 'YFII',
     claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
     earnedTokenAddress: '0xFD3569936FdAeE9A328c628dc5f871D01EbA1C72',
     earnContractAddress: '0xFD3569936FdAeE9A328c628dc5f871D01EbA1C72',
@@ -89,7 +89,7 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'USDT',
+    earnedToken: 'YFII',
     claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
     earnedTokenAddress: '0xb3ffec73d20a190f1d8e719e1dfa20a0450cb4ec',
     earnContractAddress: '0xb3ffec73d20a190f1d8e719e1dfa20a0450cb4ec',
@@ -120,7 +120,7 @@ export const pools = [
     pastPricePerFullShare: 1,
   }, */
 
-  //Heco 
+  //Heco
   /*
   {
     chainId: 128,

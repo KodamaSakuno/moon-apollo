@@ -55,7 +55,6 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
   },*/
-  /*
   {
     chainId: 56,
     id: 'busd',
@@ -71,12 +70,12 @@ export const pools = [
     tokenDescriptionUrl2: '',
     earnedToken: 'BUSD',
     claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
-    earnedTokenAddress: '0xd2c17eBf8DEdB9bD9D32699820E5d254eccA86b7',
-    earnContractAddress: '0xd2c17eBf8DEdB9bD9D32699820E5d254eccA86b7',
+    earnedTokenAddress: '0xFD3569936FdAeE9A328c628dc5f871D01EbA1C72',
+    earnContractAddress: '0xFD3569936FdAeE9A328c628dc5f871D01EbA1C72',
     defaultApy: "42.63",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  },*/
+  },
   {
     chainId: 56,
     id: 'usdt',

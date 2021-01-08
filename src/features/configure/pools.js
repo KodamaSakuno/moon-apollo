@@ -55,6 +55,7 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
   },*/
+  /*
   {
     chainId: 56,
     id: 'busd',
@@ -75,7 +76,7 @@ export const pools = [
     defaultApy: "42.63",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  },
+  },*/
   {
     chainId: 56,
     id: 'usdt',
@@ -91,12 +92,13 @@ export const pools = [
     tokenDescriptionUrl2: '',
     earnedToken: 'USDT',
     claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
-    earnedTokenAddress: '0x104eff0aCB024625FCD839eBfEef2553172dF046',
-    earnContractAddress: '0x104eff0aCB024625FCD839eBfEef2553172dF046',
+    earnedTokenAddress: '0xb3ffec73d20a190f1d8e719e1dfa20a0450cb4ec',
+    earnContractAddress: '0xb3ffec73d20a190f1d8e719e1dfa20a0450cb4ec',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
+  /*
   {
     chainId: 56,
     id: 'usdc',
@@ -117,7 +119,7 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  },
+  }, */
 
   //Heco 
   /*

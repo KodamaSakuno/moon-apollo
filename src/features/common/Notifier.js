@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { removeSnackbar } from './redux/actions';
 import Button from '@material-ui/core/Button';
+import { useConnectWallet } from 'features/home/redux/hooks';
 
 let displayed = [];
 
@@ -10,6 +11,7 @@ const Notifier = () => {
     const dispatch = useDispatch();
     const notifications = useSelector(store => store.common.notifications || []);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const { networkId } = useConnectWallet();
 
     const storeDisplayed = (id) => {
         displayed = [...displayed, id];
@@ -45,7 +47,7 @@ const Notifier = () => {
                     removeDisplayed(myKey);
                 },
                 autoHideDuration: 3000,
-                action: hash?()=><Button onClick={() => window.open(`https://bscscan.com/tx/${hash}`, "_blank")}>View</Button>:null
+                action: hash?()=><Button onClick={() => window.open(networkId === 56 ? `https://bscscan.com/tx/${hash}` : `https://scan.hecochain.com/tx/${hash}`, "_blank")}>View</Button>:null
             });
 
             // keep track of snackbars that we've displayed

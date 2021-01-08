@@ -97,7 +97,6 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
-  /*
   {
     chainId: 56,
     id: 'usdc',
@@ -111,15 +110,14 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'USDC',
+    earnedToken: 'YFII',
     claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
-    earnedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
-    earnContractAddress: '0x341E125F8258d0663c9Cd1Cdb86c2d629619F299',
+    earnedTokenAddress: '0x72A2dCcf66f85b7090D1B21689128607C84b28f6',
+    earnContractAddress: '0x72A2dCcf66f85b7090D1B21689128607C84b28f6',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-  }, */
-
+  },
   //Heco
   /*
   {

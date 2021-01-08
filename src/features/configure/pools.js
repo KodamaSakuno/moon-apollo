@@ -118,6 +118,27 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
+  {
+    chainId: 56,
+    id: 'dai',
+    name: 'DAI',
+    token: 'DAI',
+    tokenDescription: 'DAI',
+    tokenAddress: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
+    tokenDecimals: 18,
+    itokenDecimals: 18,
+    depostLimit:0,
+    depostAlert:'',
+    tokenDescriptionUrl: '',
+    tokenDescriptionUrl2: '',
+    earnedToken: 'YFII',
+    claimedTokenAddress: '0x7F70642d88cf1C4a3a7abb072B53B929b653edA5',
+    earnedTokenAddress: '0xC1F5Cf645F24b890Aab52A24A17Bf49915b6336c',
+    earnContractAddress: '0xC1F5Cf645F24b890Aab52A24A17Bf49915b6336c',
+    defaultApy: "39.54",
+    pricePerFullShare: 1,
+    pastPricePerFullShare: 1,
+  },
   //Heco
   /*
   {

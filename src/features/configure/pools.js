@@ -140,7 +140,6 @@ export const pools = [
     pastPricePerFullShare: 1,
   },
   //Heco
-  /*
   {
     chainId: 128,
     id: 'ht',
@@ -154,9 +153,10 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'HUSD',
-    earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
-    earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    earnedToken: 'HWT',
+    claimedTokenAddress: '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',    
+    earnedTokenAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',
+    earnContractAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
@@ -174,13 +174,14 @@ export const pools = [
     // depostAlert:'Vault-Dialog-Content',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'HUSD',
-    earnedTokenAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
-    earnContractAddress: '0x66ff09103e22fa875ea4bd46cc19b2370b697562',
+    earnedToken: 'WHT',
+    claimedTokenAddress: '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',    
+    earnedTokenAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',
+    earnContractAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1
-  },*/
+  },
   {
     chainId: 128,
     id: 'husd',

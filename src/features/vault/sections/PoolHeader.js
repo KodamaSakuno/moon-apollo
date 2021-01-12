@@ -47,9 +47,6 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
     console.log('stats', stats);
     console.log('isPoolStopped', isPoolStopped);
 
-    const [husdAPYLeft, husdAPYRight] = ["24.24%", "114.34"];
-    const [usdtAPYLeft, usdtAPYRight] = ["63.60%", "84.15"];
-    const [busdAPYLeft, busdAPYRight] = ["43.20%", "94.35"];
     return (
         <Grid container alignItems="center" justify="space-around" spacing={4} style={{paddingTop: "16px", paddingBottom: "16px"}}>
                 <Grid item>

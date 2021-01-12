@@ -73,11 +73,13 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
     }
 
     const handleDepositedBalance = (index,total,tokenDecimals,event,sliderNum) => {
-      setBalanceToDeposit(sliderNum == 0 ? '0': byDecimals(new BigNumber(total).times(sliderNum).div(100), tokenDecimals));
+      const val = sliderNum == 0 ? '0': new BigNumber(total).times(sliderNum).div(100).toFixed(0);
+      setBalanceToDeposit(byDecimals(val, tokenDecimals));
       setBalanceToDepositSlider(sliderNum);
     }
     const handleWithdrawAmount = (index,total,tokenDecimals,event,sliderNum) => {
-      setBalanceToWithdraw(sliderNum == 0 ? '0': byDecimals(new BigNumber(total).times(sliderNum).div(100), tokenDecimals));
+      const val = sliderNum == 0 ? '0': new BigNumber(total).times(sliderNum).div(100).toFixed(0);
+      setBalanceToWithdraw(byDecimals(val, tokenDecimals));
       setBalanceToWithdrawSlider(sliderNum);
     };
 

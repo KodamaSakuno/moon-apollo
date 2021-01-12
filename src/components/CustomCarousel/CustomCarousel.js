@@ -142,46 +142,6 @@ function CustomCarousel(props) {
             <img src={ImgUnisave} alt="slider" width={width} height={height} />
           </a>
         </div>
-        <div>
-          <a
-            className={classes.link}
-            href="https://wepiggy.com/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            <img src={ImgWePiggy} alt="slider" width={width} height={height} />
-          </a>
-        </div>
-        <div>
-          <a
-            className={classes.link}
-            href="https://sakeswap.finance/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            <img src={ImgSakeSwap} alt="slider" width={width} height={height} />
-          </a>
-        </div>
-        <div>
-          <a
-            className={classes.link}
-            href="https://s.finance/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            <img src={ImgSFinance} alt="slider" width={width} height={height} />
-          </a>
-        </div>
-        <div>
-          <a
-            className={classes.link}
-            href="https://qian.finance/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            <img src={ImgQian} alt="slider" width={width} height={height} />
-          </a>
-        </div>
       </Slider>
     </div>
   );

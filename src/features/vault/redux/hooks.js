@@ -186,8 +186,7 @@ export function useWithdraw(poolAddress, tokenAddress) {
             await new Promise((resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                const p = tokenAddress !== '' ? contract.methods.withdraw(amount).send({ from: address })
-                : contract.methods.withdrawETH(amount).send({ from: address })
+                const p = contract.methods.withdraw(amount).send({ from: address })
                 p.on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,

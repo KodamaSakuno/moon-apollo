@@ -6,10 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Slider from "react-slick";
 import ElementResizeDetector from "element-resize-detector";
 
-import ImgWePiggy from "assets/img/carousel/wepiggy.jpg";
-import ImgSFinance from "assets/img/carousel/sfinance.jpg";
-import ImgSakeSwap from "assets/img/carousel/sakeswap.jpg";
-import ImgQian from "assets/img/carousel/qian.png";
 import ImgUnisave from "assets/img/carousel/unisave-new.png";
 import YFIIMoon from "assets/img/carousel/yfii-moon.png";
 

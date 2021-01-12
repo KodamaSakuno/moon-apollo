@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import { utils } from "ethers";
 import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +10,7 @@ import {primaryColor} from "assets/jss/material-kit-pro-react.js";
 import { inputLimitPass,inputFinalVal,isEmpty } from 'features/helpers/utils';
 import BigNumber from "bignumber.js";
 import {byDecimals,calculateReallyNum} from 'features/helpers/bignumber';
-import { usePoolApy, useAllowance, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned, useBalanceOf } from '../redux/hooks';
+import { useAllowance, useFetchPoolBalances, useFetchApproval, useFetchDeposit, useFetchWithdraw, useFetchContractApy, useFetchExit, useFetchGetReward, useEarned, useBalanceOf } from '../redux/hooks';
 
 const forMat = number => {
     return new BigNumber(
@@ -37,15 +36,6 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
     const formattedEarned = byDecimals(earned)
 
     const { contractApy } = useFetchContractApy();
-    
-    const { totalStake, apy, rewardRate, stats, isPoolStopped } = usePoolApy(pool, utils.parseUnits("1", 18), utils.parseUnits("1", 18));
-
-    console.log('pool', pool);
-    console.log('totalStake', totalStake);
-    console.log('apy', apy);
-    console.log('rewardRate', rewardRate);
-    console.log('stats', stats);
-    console.log('isPoolStopped', isPoolStopped);
 
     return (
         <Grid container alignItems="center" justify="space-around" spacing={4} style={{paddingTop: "16px", paddingBottom: "16px"}}>
@@ -116,7 +106,11 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
                         </Grid>
                         <Grid item xs={12} md={3} container justify='center' alignItems="center">
                             <Grid item style={{ textAlign: "center" }}>
-                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap>{apy}</Typography>
+                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {pool.token !== 'HUSD' ?
+                                  pool.token === 'BUSD' ? `${busdAPYLeft} ~ ${busdAPYRight}` :
+                                  (pool.token === 'USDT' ? `${usdtAPYLeft} ~ ${usdtAPYRight}` : contractApy[pool.id] || 0) :
+                                  (`${husdAPYLeft} ~ ${husdAPYRight}`)
+                                }</Typography>
                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-ListAPY')}</Typography>
                             </Grid>
                         </Grid>

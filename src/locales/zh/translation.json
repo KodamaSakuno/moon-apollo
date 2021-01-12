@@ -1,6 +1,6 @@
 {
   "Nav-Home": "首页",
-  "Nav-Vault": "机枪池",
+  "Nav-Vault": "登月舱",
   "Nav-Stake": "抵押",
   "Nav-Farm": "挖矿",
   "Nav-lp": "Lp",
@@ -95,7 +95,7 @@
   "Stake-Balancer-Half-Time": "减半时间",
   "Link": {
     "Home": "首页",
-    "Vault": "机枪池",
+    "Vault": "登月舱",
     "Stake": "抵押池",
     "Contract": "合约",
     "Forum": "论坛",

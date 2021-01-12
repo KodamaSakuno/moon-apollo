@@ -106,11 +106,9 @@ export default function PoolHeader({ index, pool, classes, openedCardList, openC
                         </Grid>
                         <Grid item xs={12} md={3} container justify='center' alignItems="center">
                             <Grid item style={{ textAlign: "center" }}>
-                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> {pool.token !== 'HUSD' ?
-                                  pool.token === 'BUSD' ? `${busdAPYLeft} ~ ${busdAPYRight}` :
-                                  (pool.token === 'USDT' ? `${usdtAPYLeft} ~ ${usdtAPYRight}` : contractApy[pool.id] || 0) :
-                                  (`${husdAPYLeft} ~ ${husdAPYRight}`)
-                                }</Typography>
+                                <Typography className={classes.iconContainerMainTitle} variant="body2" gutterBottom noWrap> 
+                                  {contractApy[pool.id] || 0}
+                                </Typography>
                                 <Typography className={classes.iconContainerSubTitle} variant="body2">{t('Vault-ListAPY')}</Typography>
                             </Grid>
                         </Grid>

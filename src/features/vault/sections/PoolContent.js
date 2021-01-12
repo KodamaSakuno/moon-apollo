@@ -42,7 +42,7 @@ export default function PoolContent({ index, pool, classes, openedCardList, open
     const { onExit, isPending: isExitPending } = useFetchExit(pool.earnContractAddress)
     const { onGetReward, isPending: isGetRewardPending } = useFetchGetReward(pool.earnContractAddress)
     const { onDeposit, isPending: isDepositPending } = useDeposit(pool.earnContractAddress, pool.tokenAddress)
-    const { onWithdraw, isPending: isWithdarwPending } = useWithdraw(pool.earnContractAddress)
+    const { onWithdraw, isPending: isWithdarwPending } = useWithdraw(pool.earnContractAddress, pool.tokenAddress)
 
     const [balanceToDeposit, setBalanceToDeposit] = useState('0');
     const [balanceToDepositSlider, setBalanceToDepositSlider] = useState(0);

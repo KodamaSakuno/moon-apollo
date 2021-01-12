@@ -174,7 +174,7 @@ export function useDeposit(poolAddress, tokenAddress) {
 
     return { isPending, onDeposit: handleDeposit };
 }
-export function useWithdraw(poolAddress) {
+export function useWithdraw(poolAddress, tokenAddress) {
     const { web3, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
@@ -186,8 +186,9 @@ export function useWithdraw(poolAddress) {
             await new Promise((resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                contract.methods.withdraw(amount).send({ from: address })
-                .on('transactionHash', function(hash){
+                const p = tokenAddress !== '' ? contract.methods.withdraw(amount).send({ from: address })
+                : contract.methods.withdrawETH(amount).send({ from: address })
+                p.on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,
                         options: {
@@ -212,7 +213,7 @@ export function useWithdraw(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress]);
 
     return { isPending, onWithdraw: handleWithdraw };
 }

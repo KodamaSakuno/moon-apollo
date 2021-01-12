@@ -215,7 +215,7 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'HUSD',
+    earnedToken: 'ETH',
     claimedTokenAddress: '0x64FF637fB478863B7468bc97D30a5bF3A428a1fD',
     earnedTokenAddress: '0x64FF637fB478863B7468bc97D30a5bF3A428a1fD',
     earnContractAddress: '0x882814c0520a3790e5f4b83467eef106eb4c7b76',
@@ -223,7 +223,6 @@ export const pools = [
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
-  /*
   {
     chainId: 128,
     id: 'hbtc',
@@ -237,15 +236,12 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'HUSD',
-    claimedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
-    earnedTokenAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
-    earnContractAddress: '0xf86cf20d33dc24ab83e03b838db7f8df15ba647b',
+    earnedToken: 'HBTC',
+    claimedTokenAddress: '0x66a79d23e58475d2738179ca52cd0b41d73f0bea',
+    earnedTokenAddress: '0xd6027458c4f8441eea19e2b6a6e8cd60119c8ea1',
+    earnContractAddress: '0xd6027458c4f8441eea19e2b6a6e8cd60119c8ea1',
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
   },
-*/
-
-
 ]

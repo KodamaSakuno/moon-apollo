@@ -153,7 +153,7 @@ export const pools = [
     depostAlert:'',
     tokenDescriptionUrl: '',
     tokenDescriptionUrl2: '',
-    earnedToken: 'HWT',
+    earnedToken: 'WHT',
     claimedTokenAddress: '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',    
     earnedTokenAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',
     earnContractAddress: '0x59dfe9c9b67ccf62b4d42c7a884c1ccb20adffaa',

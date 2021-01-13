@@ -41,7 +41,7 @@ export function fetchPoolsInfo() {
   };
 }
 
-export function useFetchPoolsInfo() {
+export function useFetchPoolsInfo(networkId) {
   // args: false value or array
   // if array, means args passed to the action creator
   const dispatch = useDispatch();
@@ -54,12 +54,16 @@ export function useFetchPoolsInfo() {
     }),
     shallowEqual,
   );
+  let filterPools = [];
+  if (networkId) {
+    filterPools = pools.filter((a) => a.chainId === networkId);
+  }
 
   const boundAction = useCallback(() => dispatch(fetchPoolsInfo()), [dispatch]);
 
   return {
     fetchPoolsInfo: boundAction,
-    pools,
+    pools: filterPools,
     poolsInfo,
     fetchPoolsInfoPending
   };

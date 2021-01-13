@@ -284,7 +284,7 @@ export default function SectionPools() {
           }
         }}
         />
-        {pools.filter(pool => pool.chainId === networkId).map((pool, index) => (
+        {pools.filter(pool => (pool.chainId === networkId && !pool.liquidityOnly)).map((pool, index) => (
           <Grid item xs={12} container key={index} style={{marginBottom: "24px"}} spacing={0}>
             <div style={{width: "100%"}}>
               <Accordion

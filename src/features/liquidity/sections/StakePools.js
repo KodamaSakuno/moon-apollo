@@ -19,15 +19,17 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import leftImage from 'assets/img/stake-head-left.png';
 import rightImage from 'assets/img/stake-head-right.png';
+import { useConnectWallet } from '../../home/redux/hooks';
 import { useFetchPoolsInfo } from '../redux/hooks';
 
 const useStyles = makeStyles(stakePoolsStyle);
 
 export default function StakePools(props) {
+  const { networkId } = useConnectWallet();
   const { fromPage } = props;
   const classes = useStyles();
   const { t, i18n } = useTranslation();
-  const { pools, poolsInfo, fetchPoolsInfo } = useFetchPoolsInfo();
+  const { pools, poolsInfo, fetchPoolsInfo } = useFetchPoolsInfo(networkId);
 
   // useEffect(() => {
   //   fetchPoolsInfo();

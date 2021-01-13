@@ -1,5 +1,3 @@
-import BigNumber from "bignumber.js";
-
 export const pools = [
   /*{
     chainId: 56,

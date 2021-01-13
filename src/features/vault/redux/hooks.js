@@ -26,7 +26,7 @@ export function usePoolApy(
     const [stats, updateStats] = useState({
       mission: "",
     });
-  
+
     const contract = useMemo(() => {
       return new ethers.Contract(
         pool.earnContractAddress,
@@ -34,7 +34,7 @@ export function usePoolApy(
         ReadOnlyProvider[pool.chainId]
       );
     }, [pool]);
-  
+
     const update = useCallback(async () => {
       // rewardRate = reward for every second staking
       // const rewardRate = await contract.rewardRate();
@@ -45,14 +45,14 @@ export function usePoolApy(
         pool.chainId,
         pool.earnContractAddress
       );
-  
+
       updateRewardRate(rewardRate);
       updateTotalStaked(totalSupply);
       updateStats({
         mission,
       });
     }, [pool.earnContractAddress, pool.chainId]);
-  
+
     // let apyForDisplay = '---.--'
     // if (rewardRate !== '0' || totalStaked !== '0' ) {
     //     // 365天，24小时，每个小时3600秒
@@ -61,9 +61,9 @@ export function usePoolApy(
     //     const _apy = (yearlyRewardInBNB / Number(totalStaked))
     //     apyForDisplay = (_apy * 100).toFixed(2)
     // }
-  
+
     const isPoolStopped = useMemo(() => rewardRate.eq(0), [rewardRate]);
-  
+
     const memoizedApy = useMemo(() => {
       if (pool.itokenDecimals === 0 || pool.tokenDecimals === 0) {
         return "---.--";
@@ -76,7 +76,7 @@ export function usePoolApy(
         everyStakingValue,
         pool.tokenDecimals
       );
-  
+
       const formattedRewardRate = utils.formatUnits(
         rewardRate,
         pool.itokenDecimals
@@ -95,7 +95,7 @@ export function usePoolApy(
       const totalStakedTokenInBNB =
         Number(formattedtotalStaked) * Number(formattedStakingTokenValue);
       let apy = yearlyRewardInBNB / totalStakedTokenInBNB;
-      if (pool.chainId === 56) 
+      if (pool.chainId === 56)
         apy = apy * 1600; // multiply with 1600 for bnb chain ?
       const apyForDisplay = (apy * 100).toFixed(2);
       return apy === Number.POSITIVE_INFINITY ? "---.--" : apyForDisplay;
@@ -113,7 +113,7 @@ export function usePoolApy(
         update();
       }
     }, [contract, update]);
-  
+
     return {
       update,
       apy: memoizedApy,
@@ -244,7 +244,7 @@ export function useEarned(poolAddress) {
 
 
 export function useDeposit(poolAddress, tokenAddress) {
-    const { web3, address } = useConnectWallet();
+    const { web3, networkId, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
 
@@ -252,11 +252,15 @@ export function useDeposit(poolAddress, tokenAddress) {
     const handleDeposit = useCallback(async (amount) => {
         setIsPending(true);
         try {
-            await new Promise((resolve, reject) => {
+            await new Promise(async (resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                const p = tokenAddress !== '' ? contract.methods.deposit(amount).send({ from: address })
-                : contract.methods.depositETH().send({ from: address, value: amount })
+                let gas = await tokenAddress !== '' ? contract.methods.deposit(amount).estimateGas({ from: address })
+                : contract.methods.depositETH().estimateGas({ from: address, value: amount });
+                if (networkId === 128)
+                    gas = Math.floor(gas * 1.1)
+                const p = tokenAddress !== '' ? contract.methods.deposit(amount).send({ from: address, gas })
+                : contract.methods.depositETH().send({ from: address, value: amount, gas })
                 p.on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,
@@ -282,12 +286,12 @@ export function useDeposit(poolAddress, tokenAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress, networkId]);
 
     return { isPending, onDeposit: handleDeposit };
 }
 export function useWithdraw(poolAddress, tokenAddress) {
-    const { web3, address } = useConnectWallet();
+    const { web3, networkId, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
 
@@ -295,10 +299,13 @@ export function useWithdraw(poolAddress, tokenAddress) {
     const handleWithdraw = useCallback(async (amount) => {
         setIsPending(true);
         try {
-            await new Promise((resolve, reject) => {
+            await new Promise(async (resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                const p = contract.methods.withdraw(amount).send({ from: address })
+                let gas = await contract.methods.withdraw(amount).estimateGas({ from: address });
+                if (networkId === 128)
+                    gas = Math.floor(gas * 1.1)
+                const p = contract.methods.withdraw(amount).send({ from: address, gas })
                 p.on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,
@@ -324,12 +331,12 @@ export function useWithdraw(poolAddress, tokenAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, networkId]);
 
     return { isPending, onWithdraw: handleWithdraw };
 }
 export function useFetchGetReward(poolAddress) {
-    const { web3, address } = useConnectWallet();
+    const { web3, networkId, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
 
@@ -337,10 +344,13 @@ export function useFetchGetReward(poolAddress) {
     const handleGetReward = useCallback(async () => {
         setIsPending(true);
         try {
-            await new Promise((resolve, reject) => {
+            await new Promise(async (resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                contract.methods.getReward().send({ from: address })
+                let gas = await contract.methods.getReward().estimateGas({ from: address });
+                if (networkId === 128)
+                    gas = Math.floor(gas * 1.1)
+                contract.methods.getReward().send({ from: address, gas })
                 .on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,
@@ -366,12 +376,12 @@ export function useFetchGetReward(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, networkId]);
 
     return { isPending, onGetReward: handleGetReward };
 }
 export function useFetchExit(poolAddress) {
-    const { web3, address } = useConnectWallet();
+    const { web3, networkId, address } = useConnectWallet();
     const [isPending, setIsPending] = useState(false);
     const dispatch = useDispatch();
 
@@ -379,10 +389,13 @@ export function useFetchExit(poolAddress) {
     const handleExit = useCallback(async () => {
         setIsPending(true);
         try {
-            await new Promise((resolve, reject) => {
+            await new Promise(async (resolve, reject) => {
                 const contract = new web3.eth.Contract(LunarModuleAbi, poolAddress);
 
-                contract.methods.exit().send({ from: address })
+                let gas = await contract.methods.exit().estimateGas({ from: address });
+                if (networkId === 128)
+                    gas = Math.floor(gas * 1.1)
+                contract.methods.exit().send({ from: address, gas })
                 .on('transactionHash', function(hash){
                     dispatch(enqueueSnackbar({
                         message: hash,
@@ -408,7 +421,7 @@ export function useFetchExit(poolAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress, networkId]);
 
     return { isPending, onExit: handleExit };
 }

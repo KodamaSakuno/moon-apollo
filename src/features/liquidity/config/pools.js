@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 
 export const pools = [
-  {
+  /*{
     chainId: 56,
     name: 'eth/usdt lp',
     earnedToken: 'iETH/USDT',
@@ -89,4 +89,5 @@ export const pools = [
     pairPriceToken: '0xc509f486e551eeb6e18e7c4e1fbb8ba0348d131c',
     pairPrice: '0',
   },
+  */
 ]

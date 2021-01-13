@@ -212,7 +212,7 @@ export function useWithdraw(poolAddress, tokenAddress) {
         } finally {
             setIsPending(false);
         }
-    }, [dispatch, setIsPending, web3, address, poolAddress, tokenAddress]);
+    }, [dispatch, setIsPending, web3, address, poolAddress]);
 
     return { isPending, onWithdraw: handleWithdraw };
 }

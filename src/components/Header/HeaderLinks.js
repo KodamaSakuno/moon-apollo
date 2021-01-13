@@ -37,7 +37,7 @@ export default function HeaderLinks(props) {
     // {value:'stake',label:t('Nav-Stake')},
     // {value:'farm',label:t('Nav-Farm')},
     {value:'liquidity',label:t('Nav-lp')},
-    {value:'inactive',label:t('Nav-inactive')},
+    // {value:'inactive',label:t('Nav-inactive')},
     {value:'info',label:t('Nav-info'),externalLink:'https://heco-yield-mining-info.netlify.app/'},    
   ]
 

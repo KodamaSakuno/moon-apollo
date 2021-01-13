@@ -55,7 +55,7 @@ export default function SectionPoolsCard(props) {
   const { fetchPricePerFullShare } = useFetchPricePerFullShare();
   const { etherBalance, fetchBalance } = useFetchBalance();
   const { erc20Tokens, fetchBalances } = useFetchBalances();
-  const { poolsInfo, fetchPoolsInfo } = useFetchPoolsInfo();
+  const { poolsInfo, fetchPoolsInfo } = useFetchPoolsInfo(networkId);
 
   const [ tokenIndex, setTokenIndex ] = useState(0);
   const [ isNeedApproval, setIsNeedApproval ] = useState(true);// 是否需要授权

@@ -2,6 +2,7 @@ import BigNumber from "bignumber.js";
 
 export const pools = [
   {
+    chainId: 56,
     name: 'eth/usdt lp',
     earnedToken: 'iETH/USDT',
     token: 'ETH/USDT',
@@ -23,6 +24,7 @@ export const pools = [
     pairPrice: '0',
   },
   {
+    chainId: 56,
     name: 'eth/dai lp',
     earnedToken: 'iETH/DAI',
     token: 'ETH/DAI',
@@ -44,6 +46,7 @@ export const pools = [
     pairPrice: '0',
   },
   {
+    chainId: 56,
     name: 'eth/usdc lp',
     earnedToken: 'iETH/USDC',
     token: 'ETH/USDC',
@@ -65,6 +68,7 @@ export const pools = [
     pairPrice: '0',
   },
   {
+    chainId: 56,
     name: 'eth/wbtc lp',
     earnedToken: 'iETH/wBTC',
     token: 'ETH/wBTC',

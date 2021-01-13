@@ -21,12 +21,6 @@ import { useTranslation } from 'react-i18next';
 import styles from "assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
 const useStyles = makeStyles(styles);
 
-{/* <Tabs className={classes.tabs} value={tabValue} onChange={changeTabs}>
-<Tab value='' label='Home' id='bar-tab-0'/>
-<Tab value='vault' label='Vault' id='bar-tab-1'/>
-<Tab value='stake' label='Stake' id='bar-tab-2'/>
-</Tabs> */}
-
 export default function HeaderLinks(props) {
   let history = useHistory();
   const { dropdownHoverColor, connected, address, connectWallet, disconnectWallet } = props;
@@ -42,7 +36,9 @@ export default function HeaderLinks(props) {
     {value:'vault',label:t('Nav-Vault')},
     // {value:'stake',label:t('Nav-Stake')},
     // {value:'farm',label:t('Nav-Farm')},
-    {value:'liquidity',label:t('Nav-lp')},
+    //{value:'liquidity',label:t('Nav-lp')},
+    {value:'inactive',label:t('Nav-inactive')},
+    {value:'info',label:t('Nav-info')},    
   ]
 
   useEffect(() => {

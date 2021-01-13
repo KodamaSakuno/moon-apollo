@@ -2,6 +2,7 @@ import { App } from '../features/home';
 import { PageNotFound } from '../features/common';
 import homeRoute from '../features/home/route';
 import vaultRoute from '../features/vault/route';
+import infoRoute from '../features/info/route';
 import stakeRoute from '../features/stake/route';
 import farmRoute from '../features/farm/route';
 import commonRoute from '../features/common/route';
@@ -14,6 +15,7 @@ import _ from 'lodash';
 const childRoutes = [
   homeRoute,
   vaultRoute,
+  infoRoute,
   stakeRoute,
   commonRoute,
   farmRoute,

@@ -19,7 +19,7 @@
   "Home-ConnectWallet": "连接您的钱包以继续",
   "Home-ConnectButton": "连接",
   "Home-BrowserWallet": "连接钱包",
-  "Home-SnackBarText": "关于 Heco 版本登月池 HUSD 池 exit() 偶尔失败的说明，由于 Heco 平台目前尚未有 YFII 跨链资产，目前的 HUSD 池的目标收益为 HUSD，合约为了追求利益最大化，可能会把收益余额也作为本金放进去挖矿复投，导致暂时无法领取农耕收益，一个暂时的解决办法：用户可以通过先 deposit 一笔小金额，再 claim 再 withdraw 的方式手动解决。另外由于 Heco 头矿流动性分散，分润周期可能有所延迟，不影响最终计算结果，以上问题将在下一个头矿策略时进行改进。",
+  "Home-SnackBarText": "关于登月版的说明",
   "Home-SnackBarUrl": "https://matataki.io/p/6322",
   "Vault-Title": "存入即可增值",
   "Vault-Wallet": "钱包",

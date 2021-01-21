@@ -350,6 +350,5 @@ export const pools = [
     defaultApy: "39.54",
     pricePerFullShare: 1,
     pastPricePerFullShare: 1,
-    liquidityOnly: true,
   },
 ]

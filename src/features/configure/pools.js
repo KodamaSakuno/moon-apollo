@@ -332,7 +332,7 @@ export const pools = [
   },
   {
     chainId: 128,
-    id: 'busd',
+    id: 'usdt',
     name: 'USDT',
     token: 'USDT',
     tokenDescription: 'USDT',

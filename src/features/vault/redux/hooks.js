@@ -95,8 +95,6 @@ export function usePoolApy(
       const totalStakedTokenInBNB =
         Number(formattedtotalStaked) * Number(formattedStakingTokenValue);
       let apy = yearlyRewardInBNB / totalStakedTokenInBNB;
-      if (pool.chainId === 56)
-        apy = apy * 1600; // multiply with 1600 for bnb chain ?
       const apyForDisplay = (apy * 100).toFixed(2);
       return apy === Number.POSITIVE_INFINITY ? "---.--" : apyForDisplay;
     }, [

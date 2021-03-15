@@ -104,7 +104,6 @@ export function usePoolApy(
       pool.tokenDecimals,
       rewardRate,
       totalStaked,
-      pool.chainId,
     ]);
     useEffect(() => {
       if (contract) {
